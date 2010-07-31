@@ -63,6 +63,13 @@
         NSArray *sds = [NSArray arrayWithObject:
                         [NSSortDescriptor sortDescriptorWithKey: @"timestamp" ascending: YES]];
         interactions = [[mInteractions sortedArrayUsingDescriptors: sds] retain];
+        
+#ifndef NDEBUG
+        for (Frame * interaction in interactions)
+        {
+            NSLog(@"Interaction: %@ at %@", [interaction className], [interaction timestamp]);
+        }
+#endif
     }
     else
     {
