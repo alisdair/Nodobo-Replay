@@ -1,25 +1,25 @@
 //
-//  Frame.m
+//  Screen.m
 //  Nodobo Replay
 //
 //  Created by Alisdair McDiarmid on 30/07/2010.
 //  Copyright 2010 Nodobo. All rights reserved.
 //
 
-#import "Frame.h"
+#import "Screen.h"
 
-@implementation Frame
+@implementation Screen
 
 @synthesize path;
 @synthesize timestamp;
 @synthesize image;
 
-+ (Frame *) frameWithPath: (NSString *) p
++ (Screen *) screenWithPath: (NSString *) p
 {
-    return [[[Frame alloc] initWithPath: p] autorelease];
+    return [[[Screen alloc] initWithPath: p] autorelease];
 }
 
-- (Frame *) initWithPath: (NSString *) p
+- (Screen *) initWithPath: (NSString *) p
 {
     self = [super init];
     
@@ -45,7 +45,7 @@
 
 - (NSString *) stringValue
 {
-    return @"Frame";
+    return @"Screen";
 }
 
 - (void) dealloc

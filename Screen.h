@@ -1,5 +1,5 @@
 //
-//  Frame.h
+//  Screen.h
 //  Nodobo Replay
 //
 //  Created by Alisdair McDiarmid on 30/07/2010.
@@ -10,14 +10,14 @@
 #import "Interaction.h"
 
 
-@interface Frame : NSObject <Interaction> {
+@interface Screen : NSObject <Interaction> {
     NSString * path;
     NSDate * timestamp;
     NSImage * image;
 }
 
-+ (Frame *) frameWithPath: (NSString *) p;
-- (Frame *) initWithPath: (NSString *) p;
++ (Screen *) screenWithPath: (NSString *) p;
+- (Screen *) initWithPath: (NSString *) p;
 
 @property(readonly) NSString * path;
 @property(readonly) NSDate * timestamp;

@@ -6,7 +6,6 @@
 //
 
 #import "NodoboView.h"
-#import "Frame.h"
 
 @implementation NodoboView
 
@@ -16,11 +15,11 @@
     session = [s retain];
     
     [enumerator release];
-    enumerator = [[session.frames objectEnumerator] retain];
-    [self nextFrame: nil];
+    enumerator = [[session.screens objectEnumerator] retain];
+    [self nextScreen: nil];
     
     NSRect frame = [[self window] frame];
-    NSSize size = [currentFrame.image size];
+    NSSize size = [currentScreen.image size];
     frame = NSMakeRect(frame.origin.x, frame.origin.y, size.width, size.height);
     
     [[self window] setFrame: frame display: YES];
@@ -28,11 +27,11 @@
     [[self window] makeKeyAndOrderFront: self];
 }
 
-- (void) nextFrame: (NSTimer *) timer
+- (void) nextScreen: (NSTimer *) timer
 {
-    [currentFrame autorelease];
-    currentFrame = [[enumerator nextObject] retain];
-    if (currentFrame == nil)
+    [currentScreen autorelease];
+    currentScreen = [[enumerator nextObject] retain];
+    if (currentScreen == nil)
     {
         [timer invalidate];        
         [enumerator release];
@@ -49,22 +48,22 @@
 #ifndef NDEBUG
     NSLog(@"Playing interactions");
 #endif
-    [NSTimer scheduledTimerWithTimeInterval: 0.01 target: self selector:@selector(nextFrame:)
+    [NSTimer scheduledTimerWithTimeInterval: 0.01 target: self selector:@selector(nextScreen:)
                                    userInfo: nil repeats: YES];
 }
 
 - (void) drawRect: (NSRect) rect
 {
-    if (currentFrame == nil || currentFrame.image == nil)
+    if (currentScreen == nil || currentScreen.image == nil)
         return;
-    NSImage * image = currentFrame.image;
+    NSImage * image = currentScreen.image;
     [image drawAtPoint:NSZeroPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
 }
 
 - (void) dealloc
 {
     [session release];
-    [currentFrame release];
+    [currentScreen release];
     [enumerator release];
     [super dealloc];
 }

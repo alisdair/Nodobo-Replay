@@ -7,14 +7,14 @@
 //
 
 #import "Session.h"
-#import "Frame.h"
+#import "Screen.h"
 
 
 @implementation Session
 
 @synthesize path;
 @synthesize interactions;
-@synthesize frames;
+@synthesize screens;
 
 + (Session *) sessionWithPath: (NSString *) p
 {
@@ -46,19 +46,19 @@
     
     if ([fm fileExistsAtPath: self.path isDirectory: &isDir] && isDir)
     {
-        // Frames
+        // Screens
         NSArray * files = [fm contentsOfDirectoryAtPath: self.path error: NULL];
         NSPredicate * pngPredicate = [NSPredicate predicateWithFormat:@"SELF ENDSWITH '.png'"];
         NSArray * pngFiles = [files filteredArrayUsingPredicate: pngPredicate];
         
         for (NSString * file in pngFiles)
         {
-            Frame * frame = [Frame frameWithPath: [self.path stringByAppendingPathComponent: file]];
+            Screen * screen = [Screen screenWithPath: [self.path stringByAppendingPathComponent: file]];
             
-            // Only use frames with a timestamp
-            if (frame.timestamp != nil)
+            // Only use screens with a timestamp
+            if (screen.timestamp != nil)
             {
-                [mInteractions addObject: frame];
+                [mInteractions addObject: screen];
             }
         }
         
@@ -73,8 +73,8 @@
                         [NSSortDescriptor sortDescriptorWithKey: @"timestamp" ascending: YES]];
         interactions = [[mInteractions sortedArrayUsingDescriptors: sds] retain];
         
-        NSPredicate * fp = [NSPredicate predicateWithFormat: @"class = %@", [Frame class]];
-        frames = [[interactions filteredArrayUsingPredicate: fp] retain];
+        NSPredicate * fp = [NSPredicate predicateWithFormat: @"class = %@", [Screen class]];
+        screens = [[interactions filteredArrayUsingPredicate: fp] retain];
         
 #ifndef NDEBUG
         for (id <Interaction> interaction in interactions)
@@ -86,7 +86,7 @@
     else
     {
         interactions = [[NSArray array] retain];
-        frames = [[NSArray array] retain];
+        screens = [[NSArray array] retain];
     }
 }
 
@@ -95,7 +95,7 @@
 {
     [path release];
     [interactions release];
-    [frames release];
+    [screens release];
     [super dealloc];
 }
 

@@ -14,8 +14,8 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		F283F82612031DDA00346265 /* NodoboView.m in Sources */ = {isa = PBXBuildFile; fileRef = F283F82412031DDA00346265 /* NodoboView.m */; };
 		F283F84112031FAE00346265 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = F283F84012031FAE00346265 /* Session.m */; };
-		F2F77E0412035E74005E5496 /* Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F77E0312035E74005E5496 /* Frame.m */; };
-		F2F77E2E1203633B005E5496 /* TestFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F77E2D1203633B005E5496 /* TestFrame.m */; };
+		F2F241D91204D3B0006C6536 /* Screen.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F241D81204D3B0006C6536 /* Screen.m */; };
+		F2F241DD1204D3C9006C6536 /* TestScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F241DC1204D3C9006C6536 /* TestScreen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,11 +46,11 @@
 		F283F83F12031FAE00346265 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
 		F283F84012031FAE00346265 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 		F2F240171203A3A6006C6536 /* Interaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interaction.h; sourceTree = "<group>"; };
-		F2F77E0212035E74005E5496 /* Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Frame.h; sourceTree = "<group>"; };
-		F2F77E0312035E74005E5496 /* Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Frame.m; sourceTree = "<group>"; };
+		F2F241D71204D3B0006C6536 /* Screen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Screen.h; sourceTree = "<group>"; };
+		F2F241D81204D3B0006C6536 /* Screen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Screen.m; sourceTree = "<group>"; };
+		F2F241DC1204D3C9006C6536 /* TestScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestScreen.m; sourceTree = "<group>"; };
 		F2F77E121203627B005E5496 /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F77E131203627B005E5496 /* Unit Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Tests-Info.plist"; sourceTree = "<group>"; };
-		F2F77E2D1203633B005E5496 /* TestFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFrame.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,9 +75,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F2F77E0212035E74005E5496 /* Frame.h */,
-				F2F77E0312035E74005E5496 /* Frame.m */,
-				F2F77E2D1203633B005E5496 /* TestFrame.m */,
+				F2F241D71204D3B0006C6536 /* Screen.h */,
+				F2F241D81204D3B0006C6536 /* Screen.m */,
 				F283F83F12031FAE00346265 /* Session.h */,
 				F283F84012031FAE00346265 /* Session.m */,
 				256AC3D80F4B6AC300CF3369 /* Nodobo_ReplayAppDelegate.h */,
@@ -119,6 +118,7 @@
 		29B97314FDCFA39411CA2CEA /* Nodobo Replay */ = {
 			isa = PBXGroup;
 			children = (
+				F2F241E01204D3D1006C6536 /* Tests */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -155,6 +155,14 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2F241E01204D3D1006C6536 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F2F241DC1204D3C9006C6536 /* TestScreen.m */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +267,7 @@
 				256AC3DA0F4B6AC300CF3369 /* Nodobo_ReplayAppDelegate.m in Sources */,
 				F283F82612031DDA00346265 /* NodoboView.m in Sources */,
 				F283F84112031FAE00346265 /* Session.m in Sources */,
-				F2F77E0412035E74005E5496 /* Frame.m in Sources */,
+				F2F241D91204D3B0006C6536 /* Screen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2F77E2E1203633B005E5496 /* TestFrame.m in Sources */,
+				F2F241DD1204D3C9006C6536 /* TestScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

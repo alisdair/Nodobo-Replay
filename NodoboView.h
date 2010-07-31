@@ -7,16 +7,16 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Session.h"
-#import "Frame.h"
+#import "Screen.h"
 
 @interface NodoboView : NSView {
     Session * session;
-    Frame * currentFrame;
+    Screen * currentScreen;
     NSEnumerator * enumerator;
 }
 
 - (void) setSession:(Session *) s;
-- (void) nextFrame: (NSTimer *) timer;
+- (void) nextScreen: (NSTimer *) timer;
 - (void) play;
 
 @end
