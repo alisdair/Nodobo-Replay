@@ -19,7 +19,7 @@
 + (Frame *) frameWithPath: (NSString *) p;
 - (Frame *) initWithPath: (NSString *) p;
 
-@property(copy) NSString * path;
+@property(readonly) NSString * path;
 @property(readonly) NSDate * timestamp;
 @property(readonly) NSImage * image;
 
