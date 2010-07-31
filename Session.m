@@ -14,6 +14,7 @@
 
 @synthesize path;
 @synthesize interactions;
+@synthesize frames;
 
 + (Session *) sessionWithPath: (NSString *) p
 {
@@ -67,9 +68,13 @@
         // Open interactions.sqlite3
         // Create an Input for each record, store in interactions
         
+        // Sort then filter into multiple arrays
         NSArray *sds = [NSArray arrayWithObject:
                         [NSSortDescriptor sortDescriptorWithKey: @"timestamp" ascending: YES]];
         interactions = [[mInteractions sortedArrayUsingDescriptors: sds] retain];
+        
+        NSPredicate * fp = [NSPredicate predicateWithFormat: @"class = %@", [Frame class]];
+        frames = [[interactions filteredArrayUsingPredicate: fp] retain];
         
 #ifndef NDEBUG
         for (id <Interaction> interaction in interactions)
@@ -81,6 +86,7 @@
     else
     {
         interactions = [[NSArray array] retain];
+        frames = [[NSArray array] retain];
     }
 }
 
@@ -89,6 +95,7 @@
 {
     [path release];
     [interactions release];
+    [frames release];
     [super dealloc];
 }
 

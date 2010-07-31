@@ -12,11 +12,12 @@
 @interface Session : NSObject {
     NSString * path;
     NSArray * interactions;
+    NSArray * frames;
 }
 
-@property(copy) NSString * path;
 @property(readonly) NSString * path;
 @property(readonly) NSArray * interactions;
+@property(readonly) NSArray * frames;
 
 + (Session *) sessionWithPath: (NSString *) p;
 - (Session *) initWithPath: (NSString *) p;
