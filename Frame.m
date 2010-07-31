@@ -14,9 +14,14 @@
 @synthesize path;
 @synthesize timestamp;
 
++ (Frame *) frameWithPath: (NSString *) p
+{
+    return [[[Frame alloc] initWithPath: p] autorelease];
+}
+
 - (Frame *) initWithPath: (NSString *) p
 {
-    [self setPath: p];
+    self.path = p;
     
     return self;
 }

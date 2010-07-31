@@ -16,6 +16,8 @@
 
 @property(copy) NSString * path;
 
++ (Session *) sessionWithPath: (NSString *) p;
+- (Session *) initWithPath: (NSString *) p;
 - (void) readInteractions;
 
 @end

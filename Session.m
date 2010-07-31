@@ -11,6 +11,18 @@
 
 @implementation Session
 
++ (Session *) sessionWithPath: (NSString *) p
+{
+    return [[[Session alloc] initWithPath: p] autorelease];
+}
+
+- (Session *) initWithPath: (NSString *) p
+{
+    self.path = p;
+    
+    return self;
+}
+
 @synthesize path;
 
 - (void) setPath:(NSString *)p

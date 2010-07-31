@@ -7,13 +7,14 @@
 //
 
 #import "Nodobo_ReplayAppDelegate.h"
+#import "Session.h"
 
 @implementation Nodobo_ReplayAppDelegate
 
 @synthesize window;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	// Insert code here to initialize your application 
+	[Session sessionWithPath: @"/Users/alisdair/Dropbox/AIOS/quirpbok2/"];
 }
 
 @end
