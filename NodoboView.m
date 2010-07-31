@@ -56,6 +56,7 @@
     else
     {
         NSTimeInterval i = [nextScreen.timestamp timeIntervalSinceDate: currentScreen.timestamp];
+        i = MIN(2.0, i);
         [NSTimer scheduledTimerWithTimeInterval: i target: self
                                        selector: @selector(nextInteraction:)
                                        userInfo: nil repeats: NO];
