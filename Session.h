@@ -15,6 +15,7 @@
 }
 
 @property(copy) NSString * path;
+@property(readonly) NSArray * interactions;
 
 + (Session *) sessionWithPath: (NSString *) p;
 - (Session *) initWithPath: (NSString *) p;

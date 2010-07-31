@@ -12,6 +12,9 @@
 
 @implementation Session
 
+@synthesize path;
+@synthesize interactions;
+
 + (Session *) sessionWithPath: (NSString *) p
 {
     return [[[Session alloc] initWithPath: p] autorelease];
@@ -23,8 +26,6 @@
     
     return self;
 }
-
-@synthesize path;
 
 - (void) setPath:(NSString *)p
 {
