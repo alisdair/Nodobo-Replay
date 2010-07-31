@@ -45,7 +45,7 @@
 
     NSTimeInterval knownTimeInterval = [timestamp timeIntervalSinceReferenceDate];
     NSTimeInterval screenTimeInterval = [[screen timestamp] timeIntervalSinceReferenceDate];
-    STAssertEqualsWithAccuracy(knownTimeInterval, screenTimeInterval, 0.001, @"Timestamp '%.6d' should be '%.6d' to within 0.001", screenTimeInterval, knownTimeInterval);
+    STAssertEqualsWithAccuracy(knownTimeInterval, screenTimeInterval, 0.001, @"Timestamp '%.6f' should be '%.6f' to within 0.001", screenTimeInterval, knownTimeInterval);
     
     NSString * knownFormatted = [df stringFromDate: timestamp];
     NSString * screenFormatted = [df stringFromDate: [screen timestamp]];
