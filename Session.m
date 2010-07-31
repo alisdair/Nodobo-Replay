@@ -51,7 +51,12 @@
         for (NSString * file in pngFiles)
         {
             Frame * frame = [Frame frameWithPath: [path stringByAppendingPathComponent: file]];
-            [mInteractions addObject: frame];
+            
+            // Only use frames with a timestamp
+            if ([frame timestamp] != nil)
+            {
+                [mInteractions addObject: frame];
+            }
         }
         
         // Open context.sqlite3
