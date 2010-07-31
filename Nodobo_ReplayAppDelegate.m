@@ -12,9 +12,12 @@
 @implementation Nodobo_ReplayAppDelegate
 
 @synthesize window;
+@synthesize view;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	[Session sessionWithPath: @"/Users/alisdair/Dropbox/AIOS/quirpbok2/"];
+	Session * session = [Session sessionWithPath: @"/Users/alisdair/Dropbox/AIOS/quirpbok2/"];
+    [view setSession: session];
+    [view play];
 }
 
 @end

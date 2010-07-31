@@ -7,11 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "NodoboView.h"
 
 @interface Nodobo_ReplayAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *window;
+    NodoboView *view;
 }
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NodoboView *view;
 
 @end

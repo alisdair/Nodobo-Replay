@@ -82,8 +82,8 @@
 				F283F84012031FAE00346265 /* Session.m */,
 				256AC3D80F4B6AC300CF3369 /* Nodobo_ReplayAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* Nodobo_ReplayAppDelegate.m */,
-				F283F82412031DDA00346265 /* NodoboView.m */,
 				F283F82512031DDA00346265 /* NodoboView.h */,
+				F283F82412031DDA00346265 /* NodoboView.m */,
 				F2F240171203A3A6006C6536 /* Interaction.h */,
 			);
 			name = Classes;
