@@ -7,6 +7,7 @@
 //
 
 #import "Session.h"
+#import "Frame.h"
 
 
 @implementation Session
@@ -36,15 +37,22 @@
 {
     NSFileManager *fm = [[[NSFileManager alloc] init] autorelease];
     
-    interactions = [[NSArray alloc] init];
+    NSMutableArray * mInteractions = [NSMutableArray array];
     
-    // Verify that path is a directory
     BOOL isDir;
     
     if ([fm fileExistsAtPath: path isDirectory: &isDir] && isDir)
     {
-        // Find all PNG files in directory
-        // Create a Frame for each PNG, store in interactions
+        // Frames
+        NSArray * files = [fm contentsOfDirectoryAtPath: path error: NULL];
+        NSPredicate * pngPredicate = [NSPredicate predicateWithFormat:@"SELF ENDSWITH '.png'"];
+        NSArray * pngFiles = [files filteredArrayUsingPredicate: pngPredicate];
+        
+        for (NSString * file in pngFiles)
+        {
+            Frame * frame = [Frame frameWithPath: [path stringByAppendingPathComponent: file]];
+            [mInteractions addObject: frame];
+        }
         
         // Open context.sqlite3
         // Create a ContextEvent for each record, store in interactions
@@ -52,7 +60,13 @@
         // Open interactions.sqlite3
         // Create an InteractionEvent for each record, store in interactions
         
-        // Sort interactions by timestamp        
+        NSArray *sds = [NSArray arrayWithObject:
+                        [NSSortDescriptor sortDescriptorWithKey: @"timestamp" ascending: YES]];
+        interactions = [[mInteractions sortedArrayUsingDescriptors: sds] retain];
+    }
+    else
+    {
+        interactions = [[NSArray alloc] init];
     }
 }
 
