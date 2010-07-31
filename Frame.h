@@ -7,9 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Interaction.h"
 
 
-@interface Frame : NSObject {
+@interface Frame : NSObject <Interaction> {
     NSString * path;
     NSDate * timestamp;
     NSImage * image;

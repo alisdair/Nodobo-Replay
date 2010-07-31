@@ -45,6 +45,7 @@
 		F283F82512031DDA00346265 /* NodoboView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodoboView.h; sourceTree = "<group>"; };
 		F283F83F12031FAE00346265 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
 		F283F84012031FAE00346265 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
+		F2F240171203A3A6006C6536 /* Interaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interaction.h; sourceTree = "<group>"; };
 		F2F77E0212035E74005E5496 /* Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Frame.h; sourceTree = "<group>"; };
 		F2F77E0312035E74005E5496 /* Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Frame.m; sourceTree = "<group>"; };
 		F2F77E121203627B005E5496 /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +84,7 @@
 				256AC3D90F4B6AC300CF3369 /* Nodobo_ReplayAppDelegate.m */,
 				F283F82412031DDA00346265 /* NodoboView.m */,
 				F283F82512031DDA00346265 /* NodoboView.h */,
+				F2F240171203A3A6006C6536 /* Interaction.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";

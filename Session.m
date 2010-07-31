@@ -60,19 +60,19 @@
         }
         
         // Open context.sqlite3
-        // Create a ContextEvent for each record, store in interactions
+        // Create a Context for each record, store in interactions
         
         // Open interactions.sqlite3
-        // Create an InteractionEvent for each record, store in interactions
+        // Create an Input for each record, store in interactions
         
         NSArray *sds = [NSArray arrayWithObject:
                         [NSSortDescriptor sortDescriptorWithKey: @"timestamp" ascending: YES]];
         interactions = [[mInteractions sortedArrayUsingDescriptors: sds] retain];
         
 #ifndef NDEBUG
-        for (Frame * interaction in interactions)
+        for (id <Interaction> interaction in interactions)
         {
-            NSLog(@"Interaction: %@ at %@", [interaction className], [interaction timestamp]);
+            NSLog(@"Interaction: %@ at %@", [interaction description], [interaction timestamp]);
         }
 #endif
     }

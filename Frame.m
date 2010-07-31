@@ -8,7 +8,6 @@
 
 #import "Frame.h"
 
-
 @implementation Frame
 
 @synthesize path;
@@ -39,6 +38,11 @@
     timestamp = [[f dateFromString:filename] retain];
     
     [f release];
+}
+
+- (NSString *) description
+{
+    return @"Frame";
 }
 
 @end
