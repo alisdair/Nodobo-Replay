@@ -29,7 +29,7 @@
     [df setTimeStyle:NSDateFormatterFullStyle];
     [df setDateFormat:@"yyyyMMddHHmmss.SSS"];
     
-    frame = [[Frame alloc] initWithPath: path];
+    frame = [[Frame frameWithPath: path] retain];
     STAssertNotNil(frame, @"Could not create instance of frame.");
 }
 
@@ -53,23 +53,11 @@
     
 }
 
-- (void) testSetPath
-{
-    NSDate *oldTimestamp = [frame timestamp];
-
-    NSString *newPath = @"/Users/alisdair/data/20100730221530.466342.png";
-    [frame setPath: newPath];
-
-    STAssertNotNil([frame path], nil);
-    STAssertEquals(newPath, [frame path], nil);
-    
-    STAssertNotNil([frame timestamp], nil);
-    STAssertTrue([frame timestamp] != oldTimestamp, nil);
-}
-                 
 - (void) testBadPath
 {
-    [frame setPath: @"/Users/stephen/.secret/photos/naked-lady-with-big-boobs.png"];
+    path = @"/Users/stephen/.secret/photos/naked-lady-with-big-boobs.png";
+    [frame release];
+    frame = [[Frame frameWithPath: path] retain];
     STAssertNotNil(frame, @"Could not create instance of frame.");
     STAssertNil([frame timestamp], nil);
 }
