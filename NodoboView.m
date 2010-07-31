@@ -50,9 +50,8 @@
     if (nextScreen == nil)
     {
         [enumerator release];
-#ifndef NDEBUG
-        NSLog(@"Stopped playing interactions");
-#endif        
+        [nextLabel setStringValue: @"-"];
+        [screenLabel setStringValue: @"Done"];
     }
     else
     {
@@ -71,9 +70,6 @@
 
 - (void) play
 {
-#ifndef NDEBUG
-    NSLog(@"Playing interactions");
-#endif
     [self nextInteraction: nil];
 }
 
