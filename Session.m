@@ -22,16 +22,17 @@
 
 - (Session *) initWithPath: (NSString *) p
 {
-    self.path = p;
+    self = [super init];
     
-    return self;
-}
-
-- (void) setPath:(NSString *)p
-{
+    if (self == nil)
+        return nil;
+    
+    [path autorelease];
     path = [p copy];
     
     [self readInteractions];
+    
+    return self;
 }
 
 - (void) readInteractions
@@ -42,19 +43,19 @@
     
     BOOL isDir;
     
-    if ([fm fileExistsAtPath: path isDirectory: &isDir] && isDir)
+    if ([fm fileExistsAtPath: self.path isDirectory: &isDir] && isDir)
     {
         // Frames
-        NSArray * files = [fm contentsOfDirectoryAtPath: path error: NULL];
+        NSArray * files = [fm contentsOfDirectoryAtPath: self.path error: NULL];
         NSPredicate * pngPredicate = [NSPredicate predicateWithFormat:@"SELF ENDSWITH '.png'"];
         NSArray * pngFiles = [files filteredArrayUsingPredicate: pngPredicate];
         
         for (NSString * file in pngFiles)
         {
-            Frame * frame = [Frame frameWithPath: [path stringByAppendingPathComponent: file]];
+            Frame * frame = [Frame frameWithPath: [self.path stringByAppendingPathComponent: file]];
             
             // Only use frames with a timestamp
-            if ([frame timestamp] != nil)
+            if (frame.timestamp != nil)
             {
                 [mInteractions addObject: frame];
             }
@@ -73,13 +74,13 @@
 #ifndef NDEBUG
         for (id <Interaction> interaction in interactions)
         {
-            NSLog(@"Interaction: %@ at %@", [interaction stringValue], [interaction timestamp]);
+            NSLog(@"Interaction: %@ at %@", [interaction stringValue], interaction.timestamp);
         }
 #endif
     }
     else
     {
-        interactions = [[NSArray alloc] init];
+        interactions = [[NSArray array] retain];
     }
 }
 
