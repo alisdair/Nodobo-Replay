@@ -16,31 +16,48 @@
     
     [enumerator release];
     enumerator = [[session.screens objectEnumerator] retain];
-    [self nextScreen: nil];
+
+    currentScreen = nil;
+    nextScreen = [[enumerator nextObject] retain];
     
-    NSRect frame = [[self window] frame];
-    NSSize size = [currentScreen.image size];
-    frame = NSMakeRect(frame.origin.x, frame.origin.y, size.width, size.height);
+    [self resizeWindowForImage: nextScreen.image];
+}
+
+- (void) resizeWindowForImage: (NSImage *) image
+{
+    NSRect windowFrame = [[self window] frame];
+    NSRect viewFrame = [self frame];
+    NSSize imageSize = [image size];
+    CGFloat width = windowFrame.size.width - viewFrame.size.width + imageSize.width;
+    CGFloat height = windowFrame.size.height - viewFrame.size.height + imageSize.height;
+    windowFrame = NSMakeRect(windowFrame.origin.x, windowFrame.origin.y, width, height);
     
-    [[self window] setFrame: frame display: YES];
+    [[self window] setFrame: windowFrame display: YES];
     [[self window] center];
     [[self window] makeKeyAndOrderFront: self];
 }
 
-- (void) nextScreen: (NSTimer *) timer
+- (void) nextInteraction: (NSTimer *) timer
 {
-    [currentScreen autorelease];
-    currentScreen = [[enumerator nextObject] retain];
-    if (currentScreen == nil)
+    [currentScreen release];
+    currentScreen = nextScreen;
+    nextScreen = [[enumerator nextObject] retain];
+    [self setNeedsDisplay: YES];
+    
+    if (nextScreen == nil)
     {
-        [timer invalidate];        
         [enumerator release];
 #ifndef NDEBUG
         NSLog(@"Stopped playing interactions");
 #endif        
     }
-    
-    [self setNeedsDisplay: YES];
+    else
+    {
+        NSTimeInterval i = [nextScreen.timestamp timeIntervalSinceDate: currentScreen.timestamp];
+        [NSTimer scheduledTimerWithTimeInterval: i target: self
+                                       selector: @selector(nextInteraction:)
+                                       userInfo: nil repeats: NO];
+    }
 }
 
 - (void) play
@@ -48,8 +65,7 @@
 #ifndef NDEBUG
     NSLog(@"Playing interactions");
 #endif
-    [NSTimer scheduledTimerWithTimeInterval: 0.01 target: self selector:@selector(nextScreen:)
-                                   userInfo: nil repeats: YES];
+    [self nextInteraction: nil];
 }
 
 - (void) drawRect: (NSRect) rect

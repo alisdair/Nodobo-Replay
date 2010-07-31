@@ -12,11 +12,13 @@
 @interface NodoboView : NSView {
     Session * session;
     Screen * currentScreen;
+    Screen * nextScreen;
     NSEnumerator * enumerator;
 }
 
 - (void) setSession:(Session *) s;
-- (void) nextScreen: (NSTimer *) timer;
+- (void) resizeWindowForImage:(NSImage *)image;
+- (void) nextInteraction: (NSTimer *) timer;
 - (void) play;
 
 @end
