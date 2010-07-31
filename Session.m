@@ -72,7 +72,7 @@
 #ifndef NDEBUG
         for (id <Interaction> interaction in interactions)
         {
-            NSLog(@"Interaction: %@ at %@", [interaction description], [interaction timestamp]);
+            NSLog(@"Interaction: %@ at %@", [interaction stringValue], [interaction timestamp]);
         }
 #endif
     }

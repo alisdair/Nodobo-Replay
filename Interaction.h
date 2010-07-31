@@ -11,7 +11,7 @@
 
 @protocol Interaction
 
-- (NSString *) description;
+- (NSString *) stringValue;
 - (NSDate *) timestamp;
 
 @end

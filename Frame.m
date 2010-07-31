@@ -40,7 +40,7 @@
     [f release];
 }
 
-- (NSString *) description
+- (NSString *) stringValue
 {
     return @"Frame";
 }
