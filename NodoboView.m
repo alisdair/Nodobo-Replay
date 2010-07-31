@@ -9,6 +9,9 @@
 
 @implementation NodoboView
 
+@synthesize screenLabel;
+@synthesize nextLabel;
+
 - (void) setSession: (Session *) s
 {
     [session autorelease];
@@ -57,6 +60,12 @@
         [NSTimer scheduledTimerWithTimeInterval: i target: self
                                        selector: @selector(nextInteraction:)
                                        userInfo: nil repeats: NO];
+        
+        NSUInteger index = [session.screens indexOfObject: nextScreen];
+        NSUInteger limit = [session.screens count];
+        
+        [nextLabel setStringValue: [NSString stringWithFormat: @"Next in %.2fs", i]];
+        [screenLabel setStringValue: [NSString stringWithFormat: @"Screen %d/%d", index, limit]];
     }
 }
 

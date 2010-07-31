@@ -10,11 +10,16 @@
 #import "Screen.h"
 
 @interface NodoboView : NSView {
+    NSTextField * screenLabel;
+    NSTextField * nextLabel;
     Session * session;
     Screen * currentScreen;
     Screen * nextScreen;
     NSEnumerator * enumerator;
 }
+
+@property (assign) IBOutlet NSTextField * screenLabel;
+@property (assign) IBOutlet NSTextField * nextLabel;
 
 - (void) setSession:(Session *) s;
 - (void) resizeWindowForImage:(NSImage *)image;
