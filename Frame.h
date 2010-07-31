@@ -21,5 +21,6 @@
 
 @property(copy) NSString * path;
 @property(readonly) NSDate * timestamp;
+@property(readonly) NSImage * image;
 
 @end

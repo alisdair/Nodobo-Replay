@@ -12,6 +12,7 @@
 
 @synthesize path;
 @synthesize timestamp;
+@synthesize image;
 
 + (Frame *) frameWithPath: (NSString *) p
 {
@@ -38,6 +39,8 @@
     timestamp = [[f dateFromString:filename] retain];
     
     [f release];
+    
+    image = [[NSImage alloc] initWithContentsOfFile: self.path];
 }
 
 - (NSString *) stringValue
