@@ -17,6 +17,12 @@
 		F2F241D91204D3B0006C6536 /* Screen.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F241D81204D3B0006C6536 /* Screen.m */; };
 		F2F241DD1204D3C9006C6536 /* TestScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F241DC1204D3C9006C6536 /* TestScreen.m */; };
 		F2F2430C1204F097006C6536 /* Interaction.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F2430B1204F097006C6536 /* Interaction.m */; };
+		F2F244361205FA00006C6536 /* Input.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F244351205FA00006C6536 /* Input.m */; };
+		F2F244411205FADB006C6536 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F2443C1205FADB006C6536 /* FMDatabase.m */; };
+		F2F244421205FADB006C6536 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F2443E1205FADB006C6536 /* FMDatabaseAdditions.m */; };
+		F2F244431205FADB006C6536 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F244401205FADB006C6536 /* FMResultSet.m */; };
+		F2F244451205FB8A006C6536 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F244441205FB8A006C6536 /* libsqlite3.0.dylib */; };
+		F2F244F812060791006C6536 /* Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F244F712060791006C6536 /* Touch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,17 @@
 		F2F241D81204D3B0006C6536 /* Screen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Screen.m; sourceTree = "<group>"; };
 		F2F241DC1204D3C9006C6536 /* TestScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestScreen.m; sourceTree = "<group>"; };
 		F2F2430B1204F097006C6536 /* Interaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interaction.m; sourceTree = "<group>"; };
+		F2F244341205FA00006C6536 /* Input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Input.h; sourceTree = "<group>"; };
+		F2F244351205FA00006C6536 /* Input.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Input.m; sourceTree = "<group>"; };
+		F2F2443B1205FADB006C6536 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		F2F2443C1205FADB006C6536 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		F2F2443D1205FADB006C6536 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		F2F2443E1205FADB006C6536 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		F2F2443F1205FADB006C6536 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		F2F244401205FADB006C6536 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		F2F244441205FB8A006C6536 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		F2F244F612060791006C6536 /* Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Touch.h; sourceTree = "<group>"; };
+		F2F244F712060791006C6536 /* Touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Touch.m; sourceTree = "<group>"; };
 		F2F77E121203627B005E5496 /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F77E131203627B005E5496 /* Unit Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Tests-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				F2F244451205FB8A006C6536 /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +95,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F2F2443A1205FADB006C6536 /* FMDatabase */,
 				F2F2432A1204F0EA006C6536 /* Interactions */,
 				F283F83F12031FAE00346265 /* Session.h */,
 				F283F84012031FAE00346265 /* Session.m */,
@@ -125,6 +144,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				F2F77E131203627B005E5496 /* Unit Tests-Info.plist */,
+				F2F244441205FB8A006C6536 /* libsqlite3.0.dylib */,
 			);
 			name = "Nodobo Replay";
 			sourceTree = "<group>";
@@ -168,12 +188,29 @@
 		F2F2432A1204F0EA006C6536 /* Interactions */ = {
 			isa = PBXGroup;
 			children = (
+				F2F244341205FA00006C6536 /* Input.h */,
+				F2F244351205FA00006C6536 /* Input.m */,
 				F2F240171203A3A6006C6536 /* Interaction.h */,
 				F2F2430B1204F097006C6536 /* Interaction.m */,
 				F2F241D71204D3B0006C6536 /* Screen.h */,
 				F2F241D81204D3B0006C6536 /* Screen.m */,
+				F2F244F612060791006C6536 /* Touch.h */,
+				F2F244F712060791006C6536 /* Touch.m */,
 			);
 			name = Interactions;
+			sourceTree = "<group>";
+		};
+		F2F2443A1205FADB006C6536 /* FMDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				F2F2443B1205FADB006C6536 /* FMDatabase.h */,
+				F2F2443C1205FADB006C6536 /* FMDatabase.m */,
+				F2F2443D1205FADB006C6536 /* FMDatabaseAdditions.h */,
+				F2F2443E1205FADB006C6536 /* FMDatabaseAdditions.m */,
+				F2F2443F1205FADB006C6536 /* FMResultSet.h */,
+				F2F244401205FADB006C6536 /* FMResultSet.m */,
+			);
+			path = FMDatabase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +317,11 @@
 				F283F84112031FAE00346265 /* Session.m in Sources */,
 				F2F241D91204D3B0006C6536 /* Screen.m in Sources */,
 				F2F2430C1204F097006C6536 /* Interaction.m in Sources */,
+				F2F244361205FA00006C6536 /* Input.m in Sources */,
+				F2F244411205FADB006C6536 /* FMDatabase.m in Sources */,
+				F2F244421205FADB006C6536 /* FMDatabaseAdditions.m in Sources */,
+				F2F244431205FADB006C6536 /* FMResultSet.m in Sources */,
+				F2F244F812060791006C6536 /* Touch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

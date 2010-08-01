@@ -8,6 +8,7 @@
 
 #import "Session.h"
 #import "Screen.h"
+#import "Input.h"
 
 
 @implementation Session
@@ -40,7 +41,7 @@
 {
     screens = [Screen screensFromDirectoryAtPath: self.path];
     NSArray * contexts = [NSArray array];
-    NSArray * inputs = [NSArray array];
+    NSArray * inputs = [Input inputsFromDatabaseAtPath: [self.path stringByAppendingPathComponent: @"interactions.sqlite3"]];
     
     NSArray * merged;
     merged = [screens arrayByAddingObjectsFromArray: contexts];
@@ -52,13 +53,6 @@
     
     NSPredicate * sp = [NSPredicate predicateWithFormat: @"class = %@", [Screen class]];
     screens = [[interactions filteredArrayUsingPredicate: sp] retain];
-    
-#ifndef NDEBUG
-    for (Interaction * interaction in interactions)
-    {
-        NSLog(@"Interaction: %@ at %@", [interaction description], interaction.timestamp);
-    }
-#endif
 }
 
 

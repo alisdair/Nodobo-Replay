@@ -65,11 +65,16 @@
         screen = [thisInteraction retain];
         [self setNeedsDisplay: YES];
     }
-    // TODO: if the interaction is a touch, set the touch ivar to the interaction.
-    // Then setNeedsDisplay. Fix drawRect: to render this as an alpha-blended
-    // circle or whatever, and draw nothing when nil. Set a timer for 0.5s to call
-    // a method which resets the touch ivar to nil. That's it!
-    
+    // Touch: set up a touch to be displayed for a bit
+    else if ([thisInteraction isKindOfClass: [Touch class]])
+    {
+        [touch autorelease];
+        touch = [thisInteraction retain];
+        [self setNeedsDisplay: YES];
+        [NSTimer scheduledTimerWithTimeInterval: 0.75 target: self
+                                       selector: @selector(resetTouch:)
+                                       userInfo: nil repeats: NO];        
+    }
     if (nextInteraction == nil)
     {
         [enumerator release];
@@ -85,6 +90,12 @@
     
     Interaction * start = [session.interactions objectAtIndex: 0];
     [self setTimeIntervalLabel: nowLabel fromStart: start toEnd: thisInteraction];
+}
+
+- (void) resetTouch: (NSTimer *) timer
+{
+    [touch release];
+    touch = nil;
 }
 
 - (void) setTimeIntervalLabel: (NSTextField *) label
@@ -109,6 +120,23 @@
         return;
     NSImage * image = screen.image;
     [image drawAtPoint:NSZeroPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+    
+    if (touch != nil)
+    {
+        NSLog(@"Draw finger at (%f, %f)", touch.point.x, touch.point.y);
+
+        NSRect fingerRect;
+        CGFloat radius = 20.0;
+        
+        fingerRect.origin.x = touch.point.x - radius;
+        fingerRect.origin.y = touch.point.y - radius;
+        fingerRect.size.width = 2 * radius;
+        fingerRect.size.height = 2 * radius;
+        
+        [[NSColor colorWithCalibratedRed: 1.0 green: 0.3 blue: 0.1 alpha: 0.5] set];
+        
+        [[NSBezierPath bezierPathWithOvalInRect: fingerRect] fill];
+    }
 }
 
 - (void) dealloc

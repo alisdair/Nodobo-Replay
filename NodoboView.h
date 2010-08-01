@@ -9,12 +9,14 @@
 #import "Session.h"
 #import "Interaction.h"
 #import "Screen.h"
+#import "Touch.h"
 
 @interface NodoboView : NSView {
     NSTextField * nowLabel;
     NSTextField * endLabel;
     Session * session;
     Screen * screen;
+    Touch * touch;
     Interaction * thisInteraction;
     Interaction * nextInteraction;
     NSEnumerator * enumerator;
