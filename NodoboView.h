@@ -7,14 +7,16 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Session.h"
+#import "Interaction.h"
 #import "Screen.h"
 
 @interface NodoboView : NSView {
     NSTextField * screenLabel;
     NSTextField * nextLabel;
     Session * session;
-    Screen * currentScreen;
-    Screen * nextScreen;
+    Screen * screen;
+    Interaction * thisInteraction;
+    Interaction * nextInteraction;
     NSEnumerator * enumerator;
 }
 
@@ -23,7 +25,7 @@
 
 - (void) setSession:(Session *) s;
 - (void) resizeWindowForImage:(NSImage *)image;
-- (void) nextInteraction: (NSTimer *) timer;
+- (void) resetTimer: (NSTimer *) timer;
 - (void) play;
 
 @end

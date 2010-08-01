@@ -10,9 +10,8 @@
 #import "Interaction.h"
 
 
-@interface Screen : NSObject <Interaction> {
+@interface Screen : Interaction {
     NSString * path;
-    NSDate * timestamp;
     NSImage * image;
 }
 
@@ -20,7 +19,6 @@
 - (Screen *) initWithPath: (NSString *) p;
 
 @property(readonly) NSString * path;
-@property(readonly) NSDate * timestamp;
 @property(readonly) NSImage * image;
 
 @end

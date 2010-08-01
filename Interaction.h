@@ -9,9 +9,10 @@
 #import <Cocoa/Cocoa.h>
 
 
-@protocol Interaction
+@interface Interaction : NSObject {
+    NSDate * timestamp;    
+}
 
-- (NSString *) stringValue;
-- (NSDate *) timestamp;
+@property(readonly) NSDate * timestamp;
 
 @end

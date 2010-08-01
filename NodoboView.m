@@ -18,12 +18,19 @@
     session = [s retain];
     
     [enumerator release];
-    enumerator = [[session.screens objectEnumerator] retain];
+    enumerator = [[session.interactions objectEnumerator] retain];
 
-    currentScreen = nil;
-    nextScreen = [[enumerator nextObject] retain];
+    // Skip the start of the interactions until the first screen
+    screen = nil;
+    do {
+        screen = [enumerator nextObject];
+    } while (screen != nil && ![screen isKindOfClass: [Screen class]]);
+    [screen retain];
+    thisInteraction = nil;
+    nextInteraction = [screen retain];
     
-    [self resizeWindowForImage: nextScreen.image];
+    if (screen != nil)
+        [self resizeWindowForImage: screen.image];
 }
 
 - (void) resizeWindowForImage: (NSImage *) image
@@ -40,14 +47,25 @@
     [[self window] makeKeyAndOrderFront: self];
 }
 
-- (void) nextInteraction: (NSTimer *) timer
+- (void) resetTimer: (NSTimer *) timer
 {
-    [currentScreen release];
-    currentScreen = nextScreen;
-    nextScreen = [[enumerator nextObject] retain];
-    [self setNeedsDisplay: YES];
+    [thisInteraction release];
+    thisInteraction = nextInteraction;
+    nextInteraction = [[enumerator nextObject] retain];
     
-    if (nextScreen == nil)
+    // Screen: update the main view display
+    if ([thisInteraction isKindOfClass: [Screen class]])
+    {
+        [screen autorelease];
+        screen = [thisInteraction retain];
+        [self setNeedsDisplay: YES];
+    }
+    // TODO: if the interaction is a touch, set the touch ivar to the interaction.
+    // Then setNeedsDisplay. Fix drawRect: to render this as an alpha-blended
+    // circle or whatever, and draw nothing when nil. Set a timer for 0.5s to call
+    // a method which resets the touch ivar to nil. That's it!
+    
+    if (nextInteraction == nil)
     {
         [enumerator release];
         [nextLabel setStringValue: @"-"];
@@ -55,37 +73,39 @@
     }
     else
     {
-        NSTimeInterval i = [nextScreen.timestamp timeIntervalSinceDate: currentScreen.timestamp];
+        NSTimeInterval i = [[nextInteraction timestamp] timeIntervalSinceDate: [thisInteraction timestamp]];
         i = MIN(2.0, i);
         [NSTimer scheduledTimerWithTimeInterval: i target: self
-                                       selector: @selector(nextInteraction:)
+                                       selector: @selector(resetTimer:)
                                        userInfo: nil repeats: NO];
-        
-        NSUInteger index = [session.screens indexOfObject: nextScreen];
+        [nextLabel setStringValue: [NSString stringWithFormat: @"Next in %.2fs", i]];
+
+        NSUInteger index = [session.screens indexOfObject: screen] + 1;
         NSUInteger limit = [session.screens count];
         
-        [nextLabel setStringValue: [NSString stringWithFormat: @"Next in %.2fs", i]];
         [screenLabel setStringValue: [NSString stringWithFormat: @"Screen %d/%d", index, limit]];
     }
 }
 
 - (void) play
 {
-    [self nextInteraction: nil];
+    [self resetTimer: nil];
 }
 
 - (void) drawRect: (NSRect) rect
 {
-    if (currentScreen == nil || currentScreen.image == nil)
+    if (screen == nil || screen.image == nil)
         return;
-    NSImage * image = currentScreen.image;
+    NSImage * image = screen.image;
     [image drawAtPoint:NSZeroPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
 }
 
 - (void) dealloc
 {
     [session release];
-    [currentScreen release];
+    [screen release];
+    [thisInteraction release];
+    [nextInteraction release];
     [enumerator release];
     [super dealloc];
 }

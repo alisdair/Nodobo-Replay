@@ -11,7 +11,6 @@
 @implementation Screen
 
 @synthesize path;
-@synthesize timestamp;
 @synthesize image;
 
 + (Screen *) screenWithPath: (NSString *) p
@@ -43,15 +42,9 @@
     return self;
 }
 
-- (NSString *) stringValue
-{
-    return @"Screen";
-}
-
 - (void) dealloc
 {
     [path release];
-    [timestamp release];
     [image release];
     [super dealloc];
 }

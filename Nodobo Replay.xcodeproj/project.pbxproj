@@ -16,6 +16,7 @@
 		F283F84112031FAE00346265 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = F283F84012031FAE00346265 /* Session.m */; };
 		F2F241D91204D3B0006C6536 /* Screen.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F241D81204D3B0006C6536 /* Screen.m */; };
 		F2F241DD1204D3C9006C6536 /* TestScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F241DC1204D3C9006C6536 /* TestScreen.m */; };
+		F2F2430C1204F097006C6536 /* Interaction.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F2430B1204F097006C6536 /* Interaction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		F2F241D71204D3B0006C6536 /* Screen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Screen.h; sourceTree = "<group>"; };
 		F2F241D81204D3B0006C6536 /* Screen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Screen.m; sourceTree = "<group>"; };
 		F2F241DC1204D3C9006C6536 /* TestScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestScreen.m; sourceTree = "<group>"; };
+		F2F2430B1204F097006C6536 /* Interaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interaction.m; sourceTree = "<group>"; };
 		F2F77E121203627B005E5496 /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F77E131203627B005E5496 /* Unit Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Tests-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,15 +77,13 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F2F241D71204D3B0006C6536 /* Screen.h */,
-				F2F241D81204D3B0006C6536 /* Screen.m */,
+				F2F2432A1204F0EA006C6536 /* Interactions */,
 				F283F83F12031FAE00346265 /* Session.h */,
 				F283F84012031FAE00346265 /* Session.m */,
 				256AC3D80F4B6AC300CF3369 /* Nodobo_ReplayAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* Nodobo_ReplayAppDelegate.m */,
 				F283F82512031DDA00346265 /* NodoboView.h */,
 				F283F82412031DDA00346265 /* NodoboView.m */,
-				F2F240171203A3A6006C6536 /* Interaction.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -163,6 +163,17 @@
 				F2F241DC1204D3C9006C6536 /* TestScreen.m */,
 			);
 			name = Tests;
+			sourceTree = "<group>";
+		};
+		F2F2432A1204F0EA006C6536 /* Interactions */ = {
+			isa = PBXGroup;
+			children = (
+				F2F240171203A3A6006C6536 /* Interaction.h */,
+				F2F2430B1204F097006C6536 /* Interaction.m */,
+				F2F241D71204D3B0006C6536 /* Screen.h */,
+				F2F241D81204D3B0006C6536 /* Screen.m */,
+			);
+			name = Interactions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +279,7 @@
 				F283F82612031DDA00346265 /* NodoboView.m in Sources */,
 				F283F84112031FAE00346265 /* Session.m in Sources */,
 				F2F241D91204D3B0006C6536 /* Screen.m in Sources */,
+				F2F2430C1204F097006C6536 /* Interaction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

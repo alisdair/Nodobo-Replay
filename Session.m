@@ -77,9 +77,9 @@
         screens = [[interactions filteredArrayUsingPredicate: fp] retain];
         
 #ifndef NDEBUG
-        for (id <Interaction> interaction in interactions)
+        for (Interaction * interaction in interactions)
         {
-            NSLog(@"Interaction: %@ at %@", [interaction stringValue], interaction.timestamp);
+            NSLog(@"Interaction: %@ at %@", [interaction description], interaction.timestamp);
         }
 #endif
     }
