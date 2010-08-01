@@ -72,7 +72,7 @@
         [self setNeedsDisplay: YES];
         [NSTimer scheduledTimerWithTimeInterval: 0.75 target: self
                                        selector: @selector(resetTouch:)
-                                       userInfo: nil repeats: NO];        
+                                       userInfo: nil repeats: NO];
     }
     if (nextInteraction == nil)
     {
@@ -122,8 +122,6 @@
     
     if (touch != nil)
     {
-        NSLog(@"Draw finger at (%f, %f)", touch.point.x, touch.point.y);
-
         NSRect fingerRect;
         CGFloat radius = 20.0;
         
