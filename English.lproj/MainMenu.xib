@@ -13,7 +13,7 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="29"/>
-			<integer value="372"/>
+			<integer value="371"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1351,7 +1351,7 @@
 									<double key="NSSize">13</double>
 									<int key="NSfFlags">1044</int>
 								</object>
-								<string key="NSPlaceholderString">Screen 0/0</string>
+								<string key="NSPlaceholderString">00:00</string>
 								<reference key="NSControlView" ref="451058404"/>
 								<object class="NSColor" key="NSBackgroundColor" id="286361068">
 									<int key="NSColorSpace">6</int>
@@ -1384,7 +1384,7 @@
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="764923921"/>
-								<string key="NSPlaceholderString">Next in 0.0s</string>
+								<string key="NSPlaceholderString">99:99</string>
 								<reference key="NSControlView" ref="23716322"/>
 								<reference key="NSBackgroundColor" ref="286361068"/>
 								<reference key="NSTextColor" ref="324304446"/>
@@ -2097,19 +2097,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">screenLabel</string>
+						<string key="label">nowLabel</string>
 						<reference key="source" ref="495503557"/>
 						<reference key="destination" ref="451058404"/>
 					</object>
-					<int key="connectionID">544</int>
+					<int key="connectionID">549</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">nextLabel</string>
+						<string key="label">endLabel</string>
 						<reference key="source" ref="495503557"/>
 						<reference key="destination" ref="23716322"/>
 					</object>
-					<int key="connectionID">545</int>
+					<int key="connectionID">550</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3728,7 +3728,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">548</int>
+			<int key="maxID">550</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3740,8 +3740,8 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>nextLabel</string>
-							<string>screenLabel</string>
+							<string>endLabel</string>
+							<string>nowLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -3753,17 +3753,17 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>nextLabel</string>
-							<string>screenLabel</string>
+							<string>endLabel</string>
+							<string>nowLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">nextLabel</string>
+								<string key="name">endLabel</string>
 								<string key="candidateClassName">NSTextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">screenLabel</string>
+								<string key="name">nowLabel</string>
 								<string key="candidateClassName">NSTextField</string>
 							</object>
 						</object>

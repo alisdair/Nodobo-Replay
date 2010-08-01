@@ -11,8 +11,8 @@
 #import "Screen.h"
 
 @interface NodoboView : NSView {
-    NSTextField * screenLabel;
-    NSTextField * nextLabel;
+    NSTextField * nowLabel;
+    NSTextField * endLabel;
     Session * session;
     Screen * screen;
     Interaction * thisInteraction;
@@ -20,12 +20,14 @@
     NSEnumerator * enumerator;
 }
 
-@property (assign) IBOutlet NSTextField * screenLabel;
-@property (assign) IBOutlet NSTextField * nextLabel;
+@property (assign) IBOutlet NSTextField * nowLabel;
+@property (assign) IBOutlet NSTextField * endLabel;
 
 - (void) setSession:(Session *) s;
 - (void) resizeWindowForImage:(NSImage *)image;
+- (void) setTimeIntervalLabel: (NSTextField *) label fromStart: (Interaction *) start toEnd: (Interaction *) end;
 - (void) resetTimer: (NSTimer *) timer;
 - (void) play;
+
 
 @end

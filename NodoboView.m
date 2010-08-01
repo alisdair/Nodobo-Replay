@@ -9,8 +9,8 @@
 
 @implementation NodoboView
 
-@synthesize screenLabel;
-@synthesize nextLabel;
+@synthesize nowLabel;
+@synthesize endLabel;
 
 - (void) setSession: (Session *) s
 {
@@ -31,6 +31,11 @@
     
     if (screen != nil)
         [self resizeWindowForImage: screen.image];
+    
+    // FIXME: this really doesn't seem like it should be here...
+    Interaction * start = [session.interactions objectAtIndex: 0];
+    Interaction * end = [session.interactions objectAtIndex: [session.interactions count] - 1];
+    [self setTimeIntervalLabel: endLabel fromStart: start toEnd: end];
 }
 
 - (void) resizeWindowForImage: (NSImage *) image
@@ -68,23 +73,29 @@
     if (nextInteraction == nil)
     {
         [enumerator release];
-        [nextLabel setStringValue: @"-"];
-        [screenLabel setStringValue: @"Done"];
     }
     else
     {
-        NSTimeInterval i = [[nextInteraction timestamp] timeIntervalSinceDate: [thisInteraction timestamp]];
+        NSTimeInterval i = [nextInteraction.timestamp timeIntervalSinceDate: thisInteraction.timestamp];
         i = MIN(2.0, i);
         [NSTimer scheduledTimerWithTimeInterval: i target: self
                                        selector: @selector(resetTimer:)
                                        userInfo: nil repeats: NO];
-        [nextLabel setStringValue: [NSString stringWithFormat: @"Next in %.2fs", i]];
-
-        NSUInteger index = [session.screens indexOfObject: screen] + 1;
-        NSUInteger limit = [session.screens count];
-        
-        [screenLabel setStringValue: [NSString stringWithFormat: @"Screen %d/%d", index, limit]];
     }
+    
+    Interaction * start = [session.interactions objectAtIndex: 0];
+    [self setTimeIntervalLabel: nowLabel fromStart: start toEnd: thisInteraction];
+}
+
+- (void) setTimeIntervalLabel: (NSTextField *) label
+                    fromStart: (Interaction *) start
+                        toEnd: (Interaction *) end
+{
+    NSTimeInterval interval = [end.timestamp timeIntervalSinceDate: start.timestamp];
+    NSInteger minutes = (NSInteger) interval / 60;
+    NSInteger seconds = (NSInteger) interval % 60;
+    NSString * time = [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
+    [label setStringValue: time];    
 }
 
 - (void) play
