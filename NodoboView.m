@@ -33,9 +33,8 @@
         [self resizeWindowForImage: screen.image];
     
     // FIXME: this really doesn't seem like it should be here...
-    Interaction * start = [session.interactions objectAtIndex: 0];
     Interaction * end = [session.interactions objectAtIndex: [session.interactions count] - 1];
-    [self setTimeIntervalLabel: endLabel fromStart: start toEnd: end];
+    [self setTimeIntervalLabel: endLabel fromStart: nextInteraction toEnd: end];
 }
 
 - (void) resizeWindowForImage: (NSImage *) image
@@ -88,7 +87,7 @@
                                        userInfo: nil repeats: NO];
     }
     
-    Interaction * start = [session.interactions objectAtIndex: 0];
+    Interaction * start = [session.screens objectAtIndex: 0];
     [self setTimeIntervalLabel: nowLabel fromStart: start toEnd: thisInteraction];
 }
 
