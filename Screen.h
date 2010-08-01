@@ -15,6 +15,7 @@
     NSImage * image;
 }
 
++ (NSArray *) screensFromDirectoryAtPath: (NSString *) p;
 + (Screen *) screenWithPath: (NSString *) p;
 - (Screen *) initWithPath: (NSString *) p;
 

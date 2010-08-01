@@ -13,6 +13,29 @@
 @synthesize path;
 @synthesize image;
 
++ (NSArray *) screensFromDirectoryAtPath: (NSString *) p
+{
+    NSFileManager *fm = [[[NSFileManager alloc] init] autorelease];
+    BOOL isDir;
+    if (!([fm fileExistsAtPath: p isDirectory: &isDir] && isDir))
+        return [NSArray array];
+    
+    NSArray * files = [fm contentsOfDirectoryAtPath: p error: NULL];
+    
+    NSPredicate * pngPredicate = [NSPredicate predicateWithFormat:@"SELF ENDSWITH '.png'"];
+    NSArray * pngFiles = [files filteredArrayUsingPredicate: pngPredicate];
+    
+    NSMutableArray * screens = [NSMutableArray arrayWithCapacity: [pngFiles count]];
+    for (NSString * file in pngFiles)
+    {
+        Screen * screen = [Screen screenWithPath: [p stringByAppendingPathComponent: file]];        
+        if (screen.timestamp != nil)
+            [screens addObject: screen];
+    }
+    
+    return [NSArray arrayWithArray: screens];
+}
+
 + (Screen *) screenWithPath: (NSString *) p
 {
     return [[[Screen alloc] initWithPath: p] autorelease];

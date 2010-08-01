@@ -38,56 +38,27 @@
 
 - (void) readInteractions
 {
-    NSFileManager *fm = [[[NSFileManager alloc] init] autorelease];
+    screens = [Screen screensFromDirectoryAtPath: self.path];
+    NSArray * contexts = [NSArray array];
+    NSArray * inputs = [NSArray array];
     
-    NSMutableArray * mInteractions = [NSMutableArray array];
+    NSArray * merged;
+    merged = [screens arrayByAddingObjectsFromArray: contexts];
+    merged = [merged arrayByAddingObjectsFromArray: inputs];
+
+    NSArray *sds = [NSArray arrayWithObject:
+                    [NSSortDescriptor sortDescriptorWithKey: @"timestamp" ascending: YES]];
+    interactions = [[merged sortedArrayUsingDescriptors: sds] retain];
     
-    BOOL isDir;
+    NSPredicate * sp = [NSPredicate predicateWithFormat: @"class = %@", [Screen class]];
+    screens = [[interactions filteredArrayUsingPredicate: sp] retain];
     
-    if ([fm fileExistsAtPath: self.path isDirectory: &isDir] && isDir)
-    {
-        // Screens
-        NSArray * files = [fm contentsOfDirectoryAtPath: self.path error: NULL];
-        NSPredicate * pngPredicate = [NSPredicate predicateWithFormat:@"SELF ENDSWITH '.png'"];
-        NSArray * pngFiles = [files filteredArrayUsingPredicate: pngPredicate];
-        
-        for (NSString * file in pngFiles)
-        {
-            Screen * screen = [Screen screenWithPath: [self.path stringByAppendingPathComponent: file]];
-            
-            // Only use screens with a timestamp
-            if (screen.timestamp != nil)
-            {
-                [mInteractions addObject: screen];
-            }
-        }
-        
-        // Open context.sqlite3
-        // Create a Context for each record, store in interactions
-        
-        // Open interactions.sqlite3
-        // Create an Input for each record, store in interactions
-        
-        // Sort then filter into multiple arrays
-        NSArray *sds = [NSArray arrayWithObject:
-                        [NSSortDescriptor sortDescriptorWithKey: @"timestamp" ascending: YES]];
-        interactions = [[mInteractions sortedArrayUsingDescriptors: sds] retain];
-        
-        NSPredicate * fp = [NSPredicate predicateWithFormat: @"class = %@", [Screen class]];
-        screens = [[interactions filteredArrayUsingPredicate: fp] retain];
-        
 #ifndef NDEBUG
-        for (Interaction * interaction in interactions)
-        {
-            NSLog(@"Interaction: %@ at %@", [interaction description], interaction.timestamp);
-        }
-#endif
-    }
-    else
+    for (Interaction * interaction in interactions)
     {
-        interactions = [[NSArray array] retain];
-        screens = [[NSArray array] retain];
+        NSLog(@"Interaction: %@ at %@", [interaction description], interaction.timestamp);
     }
+#endif
 }
 
 
