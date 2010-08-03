@@ -39,7 +39,9 @@
         NSString * kind = [rs stringForColumn:@"kind"];
         NSString * data = [rs stringForColumn:@"data"];
         NSString * date = [rs stringForColumn:@"datetime"];
-        NSDate * timestamp = [f dateFromString: date];
+        long msSince1970 = [date longLongValue];
+        NSLog(@"Date: %ld", msSince1970);
+        NSDate * timestamp = [NSDate dateWithTimeIntervalSince1970:msSince1970/1000.0];
         
         Input * input = [Input inputWithKind: kind data: data timestamp: timestamp];
         if (input != nil)
