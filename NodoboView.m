@@ -33,7 +33,7 @@
         [self resizeWindowForImage: screen.image];
     
     // FIXME: this really doesn't seem like it should be here...
-    Interaction * end = [session.interactions objectAtIndex: [session.interactions count] - 1];
+    Interaction * end = [session.interactions lastObject];
     [self setTimeIntervalLabel: endLabel fromStart: nextInteraction toEnd: end];
 }
 
