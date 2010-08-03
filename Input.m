@@ -27,11 +27,6 @@
         NSLog(@"Error selecting inputs: %@", [db lastErrorMessage]);
         return [NSArray array];        
     }
-    
-    // SQLite3 stores dates in ISO 8601 strings, so we have to parse them out
-    NSDateFormatter * f = [[[NSDateFormatter alloc] init] autorelease];
-    [f setTimeStyle: NSDateFormatterFullStyle];
-    [f setDateFormat: @"yyyy-MM-dd HH:mm:ss.SSS"];
 
     NSMutableArray * inputs = [NSMutableArray array];
     while([rs next])
