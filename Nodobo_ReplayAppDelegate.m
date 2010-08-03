@@ -15,7 +15,7 @@
 @synthesize view;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	Session * session = [Session sessionWithPath: [@"~/Dropbox/AIOS/quirpbok2/" stringByExpandingTildeInPath]];
+	Session * session = [Session sessionWithPath: [@"~/Dropbox/AIOS/epochtimetest/" stringByExpandingTildeInPath]];
     [view setSession: session];
     [view play];
 }
