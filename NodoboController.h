@@ -17,6 +17,7 @@
     NodoboView * view;
     NSTextField * nowLabel;
     NSTextField * endLabel;
+
     Session * session;
     Interaction * thisInteraction;
     Interaction * nextInteraction;
@@ -27,7 +28,12 @@
 @property (assign) IBOutlet NSTextField * nowLabel;
 @property (assign) IBOutlet NSTextField * endLabel;
 
+@property (retain) NSEnumerator * enumerator;
+@property (retain) Interaction * thisInteraction;
+@property (retain) Interaction * nextInteraction;
+
 - (void) setSession:(Session *) s;
+- (void) rewind;
 - (void) setTimeIntervalLabel: (NSTextField *) label fromStart: (Interaction *) start toEnd: (Interaction *) end;
 - (void) resetTimer: (NSTimer *) timer;
 - (void) play;

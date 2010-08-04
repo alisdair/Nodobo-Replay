@@ -15,13 +15,21 @@
 @synthesize nowLabel;
 @synthesize endLabel;
 
+@synthesize enumerator;
+@synthesize thisInteraction;
+@synthesize nextInteraction;
+
 - (void) setSession: (Session *) s
 {
     [session autorelease];
     session = [s retain];
     
-    [enumerator release];
-    enumerator = [[session.interactions objectEnumerator] retain];
+    [self rewind];
+}
+
+- (void) rewind
+{    
+    self.enumerator = [session.interactions objectEnumerator];
     
     // Skip the start of the interactions until the first screen
     Screen * screen;
@@ -32,8 +40,8 @@
     }
     view.screen = screen;
     
-    thisInteraction = nil;
-    nextInteraction = [screen retain];
+    self.thisInteraction = nil;
+    self.nextInteraction = screen;
     
     [view resizeWindow];
     
@@ -44,32 +52,31 @@
 
 - (void) resetTimer: (NSTimer *) timer
 {
-    [thisInteraction release];
-    thisInteraction = nextInteraction;
-    nextInteraction = [[enumerator nextObject] retain];
+    self.thisInteraction = self.nextInteraction;
+    self.nextInteraction = [enumerator nextObject];
     
     // Screen: update the main view display
-    if ([thisInteraction isKindOfClass: [Screen class]])
+    if ([self.thisInteraction isKindOfClass: [Screen class]])
     {
-        view.screen = (Screen *) thisInteraction;
+        view.screen = (Screen *) self.thisInteraction;
         [view setNeedsDisplay: YES];
     }
     // Touch: set up a touch to be displayed for a bit
-    else if ([thisInteraction isKindOfClass: [Touch class]])
+    else if ([self.thisInteraction isKindOfClass: [Touch class]])
     {
-        view.touch = (Touch *) thisInteraction;
+        view.touch = (Touch *) self.thisInteraction;
         [view setNeedsDisplay: YES];
         [NSTimer scheduledTimerWithTimeInterval: 0.75 target: self
                                        selector: @selector(resetTouch:)
                                        userInfo: nil repeats: NO];
     }
-    if (nextInteraction == nil)
+    if (self.nextInteraction == nil)
     {
-        [enumerator release];
+        self.enumerator = nil;
     }
     else
     {
-        NSTimeInterval i = [nextInteraction.timestamp timeIntervalSinceDate: thisInteraction.timestamp];
+        NSTimeInterval i = [self.nextInteraction.timestamp timeIntervalSinceDate: self.thisInteraction.timestamp];
         i = MIN(2.0, i);
         [NSTimer scheduledTimerWithTimeInterval: i target: self
                                        selector: @selector(resetTimer:)
@@ -77,7 +84,7 @@
     }
     
     Interaction * start = [session.screens objectAtIndex: 0];
-    [self setTimeIntervalLabel: nowLabel fromStart: start toEnd: thisInteraction];
+    [self setTimeIntervalLabel: nowLabel fromStart: start toEnd: self.thisInteraction];
 }
 
 - (void) resetTouch: (NSTimer *) timer
