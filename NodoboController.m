@@ -24,10 +24,12 @@
     enumerator = [[session.interactions objectEnumerator] retain];
     
     // Skip the start of the interactions until the first screen
-    Screen * screen = nil;
-    do {
-        screen = [enumerator nextObject];
-    } while (screen != nil && ![screen isKindOfClass: [Screen class]]);
+    Screen * screen;
+    for (screen in enumerator)
+    {
+        if (screen == nil || [screen isKindOfClass: [Screen class]])
+            break;
+    }
     view.screen = screen;
     
     thisInteraction = nil;
