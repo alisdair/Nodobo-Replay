@@ -7,20 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "NodoboView.h"
+#import "NodoboController.h"
 
-#if (MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_5)
-@interface Nodobo_ReplayAppDelegate : NSObject
-#else
 @interface Nodobo_ReplayAppDelegate : NSObject <NSApplicationDelegate>
-#endif
 {
-    NSWindow *window;
-    NodoboView *view;
+    NSWindow * window;
+    NodoboController * controller;
 }
 
-@property (assign) IBOutlet NSWindow *window;
-@property (assign) IBOutlet NodoboView *view;
+@property(assign) IBOutlet NSWindow * window;
+@property(assign) IBOutlet NodoboController * controller;
 
 - (IBAction) runPanel: (id) sender;
 
