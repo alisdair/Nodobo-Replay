@@ -14,8 +14,23 @@
 @synthesize window;
 @synthesize view;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	Session * session = [Session sessionWithPath: [@"~/Dropbox/AIOS/epochtimetest/" stringByExpandingTildeInPath]];
+- (void) applicationDidFinishLaunching: (NSNotification *) notification
+{
+    [self runPanel: self];
+}
+
+- (IBAction) runPanel: (id) sender
+{
+    NSOpenPanel * panel = [NSOpenPanel openPanel];
+    [panel setCanChooseFiles: NO];
+    [panel setCanChooseDirectories: YES];
+    [panel setAllowsMultipleSelection: NO];
+    NSInteger result = [panel runModal];
+    if (result == NSFileHandlingPanelCancelButton)
+        return;
+    
+    NSArray *urls = [panel URLs];
+	Session * session = [Session sessionWithPath: [[urls lastObject] path]];
     [view setSession: session];
     [view play];
 }

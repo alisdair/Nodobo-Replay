@@ -22,4 +22,6 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NodoboView *view;
 
+- (IBAction) runPanel: (id) sender;
+
 @end
