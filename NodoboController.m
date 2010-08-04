@@ -12,8 +12,8 @@
 @implementation NodoboController
 
 @synthesize view;
-@synthesize nowLabel;
-@synthesize endLabel;
+@synthesize label;
+@synthesize pause;
 
 @synthesize session;
 @synthesize enumerator;
@@ -23,27 +23,38 @@
 
 - (void) rewind
 {
-    [self.timer invalidate];
-    
-    self.enumerator = [session.interactions objectEnumerator];
+    self.enumerator = [self.session.interactions objectEnumerator];
+    view.screen = [self.session.screens objectAtIndex: 0];
+    view.touch = nil;
     
     // Skip the start of the interactions until the first screen
-    Screen * screen;
-    for (screen in enumerator)
-    {
-        if (screen == nil || [screen isKindOfClass: [Screen class]])
+    for (Interaction * interaction in enumerator)
+        if (interaction == nil || interaction == view.screen)
             break;
-    }
-    view.screen = screen;
     
     self.thisInteraction = nil;
-    self.nextInteraction = screen;
+    self.nextInteraction = view.screen;
     
     [view resizeWindow];
-    
-    // FIXME: this really doesn't seem like it should be here...
-    Interaction * end = [session.interactions lastObject];
-    [self setTimeIntervalLabel: endLabel fromStart: nextInteraction toEnd: end];
+}
+
+- (IBAction) play: (id) sender
+{
+    [self.timer invalidate];
+    self.timer = nil;
+    [self.pause setTitle: @"Pause"];
+    [self.pause setAction: @selector(pause:)];
+    if (sender == nil)
+        [self rewind];
+    [self resetTimer: nil];
+}
+
+- (IBAction) pause: (id) sender
+{
+    [self.timer invalidate];
+    self.timer = nil;
+    [self.pause setTitle: @"Play"];
+    [self.pause setAction: @selector(play:)];
 }
 
 - (void) resetTimer: (NSTimer *) timer
@@ -79,8 +90,7 @@
                                                     userInfo: nil repeats: NO];
     }
     
-    Interaction * start = [session.screens objectAtIndex: 0];
-    [self setTimeIntervalLabel: nowLabel fromStart: start toEnd: self.thisInteraction];
+    [self updateLabel];
 }
 
 - (void) resetTouch: (NSTimer *) timer
@@ -88,21 +98,15 @@
     view.touch = nil;
 }
 
-- (void) setTimeIntervalLabel: (NSTextField *) label
-                    fromStart: (Interaction *) start
-                        toEnd: (Interaction *) end
+- (void) updateLabel
 {
-    NSTimeInterval interval = [end.timestamp timeIntervalSinceDate: start.timestamp];
+    NSDate * start = [(Screen * )[self.session.screens objectAtIndex: 0] timestamp];
+    NSDate * now = self.thisInteraction.timestamp;
+    NSTimeInterval interval = [now timeIntervalSinceDate: start];
+    
     NSInteger minutes = (NSInteger) interval / 60;
     NSInteger seconds = (NSInteger) interval % 60;
-    NSString * time = [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
-    [label setStringValue: time];
-}
-
-- (void) play
-{
-    [self rewind];
-    [self resetTimer: nil];
+    [label setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
 }
 
 - (void) dealloc

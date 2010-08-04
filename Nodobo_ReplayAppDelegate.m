@@ -32,7 +32,7 @@
     NSArray * urls = [panel URLs];
 	Session * session = [Session sessionWithPath: [[urls lastObject] path]];
     [controller setSession: session];
-    [controller play];
+    [controller play: nil];
 }
 
 @end

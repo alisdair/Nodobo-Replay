@@ -15,9 +15,9 @@
 
 @interface NodoboController : NSObject {
     NodoboView * view;
-    NSTextField * nowLabel;
-    NSTextField * endLabel;
-
+    NSTextField * label;
+    NSButton * pause;
+    
     Session * session;
     Interaction * thisInteraction;
     Interaction * nextInteraction;
@@ -26,8 +26,8 @@
 }
 
 @property (assign) IBOutlet NodoboView * view;
-@property (assign) IBOutlet NSTextField * nowLabel;
-@property (assign) IBOutlet NSTextField * endLabel;
+@property (assign) IBOutlet NSTextField * label;
+@property (assign) IBOutlet NSButton * pause;
 
 @property (retain) Session * session;
 @property (retain) NSEnumerator * enumerator;
@@ -35,10 +35,11 @@
 @property (retain) Interaction * nextInteraction;
 @property (assign) NSTimer * timer;
 
-- (void) setSession:(Session *) s;
 - (void) rewind;
-- (void) setTimeIntervalLabel: (NSTextField *) label fromStart: (Interaction *) start toEnd: (Interaction *) end;
+- (IBAction) pause: (id) sender;
+- (IBAction) play: (id) sender;
+
+- (void) updateLabel;
 - (void) resetTimer: (NSTimer *) timer;
-- (void) play;
 
 @end
