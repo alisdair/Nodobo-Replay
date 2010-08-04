@@ -18,6 +18,7 @@
 @synthesize enumerator;
 @synthesize thisInteraction;
 @synthesize nextInteraction;
+@synthesize timer;
 
 - (void) setSession: (Session *) s
 {
@@ -28,7 +29,9 @@
 }
 
 - (void) rewind
-{    
+{
+    [self.timer invalidate];
+    
     self.enumerator = [session.interactions objectEnumerator];
     
     // Skip the start of the interactions until the first screen
@@ -78,9 +81,9 @@
     {
         NSTimeInterval i = [self.nextInteraction.timestamp timeIntervalSinceDate: self.thisInteraction.timestamp];
         i = MIN(2.0, i);
-        [NSTimer scheduledTimerWithTimeInterval: i target: self
-                                       selector: @selector(resetTimer:)
-                                       userInfo: nil repeats: NO];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval: i target: self
+                                                    selector: @selector(resetTimer:)
+                                                    userInfo: nil repeats: NO];
     }
     
     Interaction * start = [session.screens objectAtIndex: 0];

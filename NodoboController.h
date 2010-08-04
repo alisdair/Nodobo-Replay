@@ -21,7 +21,8 @@
     Session * session;
     Interaction * thisInteraction;
     Interaction * nextInteraction;
-    NSEnumerator * enumerator;    
+    NSEnumerator * enumerator;
+    NSTimer * timer;
 }
 
 @property (assign) IBOutlet NodoboView * view;
@@ -31,6 +32,7 @@
 @property (retain) NSEnumerator * enumerator;
 @property (retain) Interaction * thisInteraction;
 @property (retain) Interaction * nextInteraction;
+@property (assign) NSTimer * timer;
 
 - (void) setSession:(Session *) s;
 - (void) rewind;
