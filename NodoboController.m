@@ -15,18 +15,11 @@
 @synthesize nowLabel;
 @synthesize endLabel;
 
+@synthesize session;
 @synthesize enumerator;
 @synthesize thisInteraction;
 @synthesize nextInteraction;
 @synthesize timer;
-
-- (void) setSession: (Session *) s
-{
-    [session autorelease];
-    session = [s retain];
-    
-    [self rewind];
-}
 
 - (void) rewind
 {
@@ -108,6 +101,7 @@
 
 - (void) play
 {
+    [self rewind];
     [self resetTimer: nil];
 }
 

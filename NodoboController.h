@@ -29,6 +29,7 @@
 @property (assign) IBOutlet NSTextField * nowLabel;
 @property (assign) IBOutlet NSTextField * endLabel;
 
+@property (retain) Session * session;
 @property (retain) NSEnumerator * enumerator;
 @property (retain) Interaction * thisInteraction;
 @property (retain) Interaction * nextInteraction;
