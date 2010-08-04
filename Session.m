@@ -48,7 +48,7 @@
     merged = [merged arrayByAddingObjectsFromArray: inputs];
 
     NSArray *sds = [NSArray arrayWithObject:
-                    [NSSortDescriptor sortDescriptorWithKey: @"timestamp" ascending: YES]];
+                    [[[NSSortDescriptor alloc] initWithKey: @"timestamp" ascending: YES] autorelease]];
     interactions = [[merged sortedArrayUsingDescriptors: sds] retain];
     
     NSPredicate * sp = [NSPredicate predicateWithFormat: @"class = %@", [Screen class]];
