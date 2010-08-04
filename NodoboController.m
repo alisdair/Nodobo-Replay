@@ -107,10 +107,11 @@
 
 - (void) dealloc
 {
-    [session release];
-    [thisInteraction release];
-    [nextInteraction release];
-    [enumerator release];
+    [self.timer invalidate];
+    self.session = nil;
+    self.thisInteraction = nil;
+    self.nextInteraction = nil;
+    self.enumerator = nil;
     [super dealloc];
 }
 
