@@ -96,7 +96,7 @@
     NSInteger minutes = (NSInteger) interval / 60;
     NSInteger seconds = (NSInteger) interval % 60;
     NSString * time = [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
-    [label setStringValue: time];    
+    [label setStringValue: time];
 }
 
 - (void) play
