@@ -14,6 +14,7 @@
 @synthesize view;
 @synthesize label;
 @synthesize pause;
+@synthesize slider;
 
 @synthesize session;
 @synthesize enumerator;
@@ -34,8 +35,6 @@
     
     self.thisInteraction = nil;
     self.nextInteraction = view.screen;
-    
-    [view resizeWindow];
 }
 
 - (IBAction) play: (id) sender
@@ -56,8 +55,33 @@
     [self.pause setTitle: @"Play"];
     [self.pause setAction: @selector(play:)];
 }
-
 - (void) resetTimer: (NSTimer *) timer
+{
+    [self updateInteraction];
+    
+    if (self.nextInteraction == nil)
+    {
+        self.enumerator = nil;
+    }
+    else
+    {
+        NSTimeInterval i = [self.nextInteraction.timestamp timeIntervalSinceDate: self.thisInteraction.timestamp];
+        i = MIN(2.0, i);
+        self.timer = [NSTimer scheduledTimerWithTimeInterval: i target: self
+                                                    selector: @selector(resetTimer:)
+                                                    userInfo: nil repeats: NO];
+    }
+        
+    [self updateLabel];
+    [self updateSlider];
+}
+
+- (void) resetTouch: (NSTimer *) timer
+{
+    view.touch = nil;
+}
+
+- (void) updateInteraction
 {
     self.thisInteraction = self.nextInteraction;
     self.nextInteraction = [enumerator nextObject];
@@ -76,26 +100,7 @@
         [NSTimer scheduledTimerWithTimeInterval: 0.75 target: self
                                        selector: @selector(resetTouch:)
                                        userInfo: nil repeats: NO];
-    }
-    if (self.nextInteraction == nil)
-    {
-        self.enumerator = nil;
-    }
-    else
-    {
-        NSTimeInterval i = [self.nextInteraction.timestamp timeIntervalSinceDate: self.thisInteraction.timestamp];
-        i = MIN(2.0, i);
-        self.timer = [NSTimer scheduledTimerWithTimeInterval: i target: self
-                                                    selector: @selector(resetTimer:)
-                                                    userInfo: nil repeats: NO];
-    }
-    
-    [self updateLabel];
-}
-
-- (void) resetTouch: (NSTimer *) timer
-{
-    view.touch = nil;
+    }    
 }
 
 - (void) updateLabel
@@ -107,6 +112,43 @@
     NSInteger minutes = (NSInteger) interval / 60;
     NSInteger seconds = (NSInteger) interval % 60;
     [label setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
+}
+
+- (void) updateSlider
+{
+    NSDate * start = [(Screen * )[self.session.screens objectAtIndex: 0] timestamp];
+    NSDate * end = [(Screen * )[self.session.screens lastObject] timestamp];
+    NSDate * now = self.thisInteraction.timestamp;
+    NSTimeInterval total = [end timeIntervalSinceDate: start];
+    NSTimeInterval interval = [now timeIntervalSinceDate: start];
+    
+    [slider setFloatValue: interval/total];
+}
+
+- (IBAction) scrub: (id) sender
+{
+    [self.timer invalidate];
+    self.timer = nil;
+    [self rewind];
+    
+    NSDate * start = [(Screen * )[self.session.screens objectAtIndex: 0] timestamp];
+    NSDate * end = [(Screen * )[self.session.screens lastObject] timestamp];
+    NSTimeInterval total = [end timeIntervalSinceDate: start];
+    NSDate * now = [start dateByAddingTimeInterval: total * [slider floatValue]];
+    
+    while (self.nextInteraction != nil)
+    {
+        self.nextInteraction = [enumerator nextObject];
+        if ([self.nextInteraction.timestamp timeIntervalSinceDate: now] >= 0.0)
+        {
+            break;
+        }
+    }
+    
+    if ([[pause title] isEqual: @"Play"])        
+        [self updateInteraction];
+    else
+        [self resetTimer: nil];
 }
 
 - (void) dealloc

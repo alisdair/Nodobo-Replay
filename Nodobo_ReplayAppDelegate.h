@@ -12,10 +12,12 @@
 @interface Nodobo_ReplayAppDelegate : NSObject <NSApplicationDelegate>
 {
     NSWindow * window;
+    NodoboView * view;
     NodoboController * controller;
 }
 
 @property(assign) IBOutlet NSWindow * window;
+@property(assign) IBOutlet NodoboView * view;
 @property(assign) IBOutlet NodoboController * controller;
 
 - (IBAction) runPanel: (id) sender;

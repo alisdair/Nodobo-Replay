@@ -12,6 +12,7 @@
 @implementation Nodobo_ReplayAppDelegate
 
 @synthesize window;
+@synthesize view;
 @synthesize controller;
 
 - (void) applicationDidFinishLaunching: (NSNotification *) notification
@@ -33,6 +34,7 @@
 	Session * session = [Session sessionWithPath: [[urls lastObject] path]];
     [controller setSession: session];
     [controller play: nil];
+    [view resizeWindow];
 }
 
 @end

@@ -17,6 +17,7 @@
     NodoboView * view;
     NSTextField * label;
     NSButton * pause;
+    NSSlider * slider;
     
     Session * session;
     Interaction * thisInteraction;
@@ -28,6 +29,7 @@
 @property (assign) IBOutlet NodoboView * view;
 @property (assign) IBOutlet NSTextField * label;
 @property (assign) IBOutlet NSButton * pause;
+@property (assign) IBOutlet NSSlider * slider;
 
 @property (retain) Session * session;
 @property (retain) NSEnumerator * enumerator;
@@ -39,7 +41,11 @@
 - (IBAction) pause: (id) sender;
 - (IBAction) play: (id) sender;
 
-- (void) updateLabel;
 - (void) resetTimer: (NSTimer *) timer;
+- (void) resetTouch: (NSTimer *) timer;
+- (void) updateInteraction;
+- (void) updateLabel;
+- (void) updateSlider;
+- (IBAction) scrub: (id) sender;
 
 @end

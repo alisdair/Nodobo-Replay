@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="29"/>
 			<integer value="372"/>
+			<integer value="29"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -395,12 +395,12 @@
 						</object>
 						<object class="NSSlider" id="277774056">
 							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">-2147483358</int>
+							<int key="NSvFlags">290</int>
 							<string key="NSFrame">{{39, 36}, {227, 15}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSSliderCell" key="NSCell" id="711562961">
-								<int key="NSCellFlags">-2080244224</int>
+								<int key="NSCellFlags">-2079981824</int>
 								<int key="NSCellFlags2">131072</int>
 								<string key="NSContents"/>
 								<reference key="NSControlView" ref="277774056"/>
@@ -615,6 +615,54 @@
 						<reference key="destination" ref="48557373"/>
 					</object>
 					<int key="connectionID">575</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">slider</string>
+						<reference key="source" ref="95820021"/>
+						<reference key="destination" ref="277774056"/>
+					</object>
+					<int key="connectionID">576</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">initialFirstResponder</string>
+						<reference key="source" ref="972006081"/>
+						<reference key="destination" ref="48557373"/>
+					</object>
+					<int key="connectionID">577</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">nextKeyView</string>
+						<reference key="source" ref="48557373"/>
+						<reference key="destination" ref="439893737"/>
+					</object>
+					<int key="connectionID">578</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">nextKeyView</string>
+						<reference key="source" ref="277774056"/>
+						<reference key="destination" ref="48557373"/>
+					</object>
+					<int key="connectionID">579</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">scrub:</string>
+						<reference key="source" ref="95820021"/>
+						<reference key="destination" ref="277774056"/>
+					</object>
+					<int key="connectionID">580</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">view</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="495503557"/>
+					</object>
+					<int key="connectionID">581</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1099,9 +1147,9 @@
 					<integer value="1"/>
 					<string>{74, 862}</string>
 					<string>{{6, 978}, {478, 20}}</string>
-					<string>{{427, 239}, {272, 252}}</string>
+					<string>{{427, 189}, {272, 252}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{427, 239}, {272, 252}}</string>
+					<string>{{427, 189}, {272, 252}}</string>
 					<boolean value="NO"/>
 					<string>{{33, 99}, {480, 360}}</string>
 					<boolean value="YES"/>
@@ -1161,7 +1209,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">575</int>
+			<int key="maxID">581</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1175,9 +1223,11 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>pause:</string>
 							<string>play:</string>
+							<string>scrub:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -1188,6 +1238,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>pause:</string>
 							<string>play:</string>
+							<string>scrub:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1199,6 +1250,10 @@
 								<string key="name">play:</string>
 								<string key="candidateClassName">id</string>
 							</object>
+							<object class="IBActionInfo">
+								<string key="name">scrub:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
@@ -1207,12 +1262,14 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>label</string>
 							<string>pause</string>
+							<string>slider</string>
 							<string>view</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSTextField</string>
 							<string>NSButton</string>
+							<string>NSSlider</string>
 							<string>NodoboView</string>
 						</object>
 					</object>
@@ -1222,6 +1279,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>label</string>
 							<string>pause</string>
+							<string>slider</string>
 							<string>view</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -1233,6 +1291,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">pause</string>
 								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">slider</string>
+								<string key="candidateClassName">NSSlider</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">view</string>
@@ -1280,11 +1342,13 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>controller</string>
+							<string>view</string>
 							<string>window</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NodoboController</string>
+							<string>NodoboView</string>
 							<string>NSWindow</string>
 						</object>
 					</object>
@@ -1293,6 +1357,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>controller</string>
+							<string>view</string>
 							<string>window</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -1300,6 +1365,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">controller</string>
 								<string key="candidateClassName">NodoboController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">view</string>
+								<string key="candidateClassName">NodoboView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">window</string>
