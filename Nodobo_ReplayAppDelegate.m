@@ -12,7 +12,7 @@
 @implementation Nodobo_ReplayAppDelegate
 
 @synthesize window;
-@synthesize view;
+@synthesize controller;
 
 - (void) applicationDidFinishLaunching: (NSNotification *) notification
 {
@@ -29,10 +29,10 @@
     if (result == NSFileHandlingPanelCancelButton)
         return;
     
-    NSArray *urls = [panel URLs];
+    NSArray * urls = [panel URLs];
 	Session * session = [Session sessionWithPath: [[urls lastObject] path]];
-    [view setSession: session];
-    [view play];
+    [controller setSession: session];
+    [controller play];
 }
 
 @end

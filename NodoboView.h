@@ -6,30 +6,17 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "Session.h"
-#import "Interaction.h"
 #import "Screen.h"
 #import "Touch.h"
 
 @interface NodoboView : NSView {
-    NSTextField * nowLabel;
-    NSTextField * endLabel;
-    Session * session;
     Screen * screen;
     Touch * touch;
-    Interaction * thisInteraction;
-    Interaction * nextInteraction;
-    NSEnumerator * enumerator;
 }
 
-@property (assign) IBOutlet NSTextField * nowLabel;
-@property (assign) IBOutlet NSTextField * endLabel;
+@property(retain) Screen * screen;
+@property(retain) Touch * touch;
 
-- (void) setSession:(Session *) s;
-- (void) resizeWindowForImage:(NSImage *)image;
-- (void) setTimeIntervalLabel: (NSTextField *) label fromStart: (Interaction *) start toEnd: (Interaction *) end;
-- (void) resetTimer: (NSTimer *) timer;
-- (void) play;
-
+- (void) resizeWindow;
 
 @end

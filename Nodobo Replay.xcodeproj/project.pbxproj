@@ -12,6 +12,7 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		F2766D9A1209DF3100B3BD62 /* NodoboController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2766D991209DF3100B3BD62 /* NodoboController.m */; };
 		F283F82612031DDA00346265 /* NodoboView.m in Sources */ = {isa = PBXBuildFile; fileRef = F283F82412031DDA00346265 /* NodoboView.m */; };
 		F283F84112031FAE00346265 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = F283F84012031FAE00346265 /* Session.m */; };
 		F2F241D91204D3B0006C6536 /* Screen.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F241D81204D3B0006C6536 /* Screen.m */; };
@@ -48,6 +49,8 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Nodobo_Replay-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Nodobo_Replay-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Nodobo Replay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nodobo Replay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2766D981209DF3100B3BD62 /* NodoboController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodoboController.h; sourceTree = "<group>"; };
+		F2766D991209DF3100B3BD62 /* NodoboController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NodoboController.m; sourceTree = "<group>"; };
 		F283F82412031DDA00346265 /* NodoboView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NodoboView.m; sourceTree = "<group>"; };
 		F283F82512031DDA00346265 /* NodoboView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodoboView.h; sourceTree = "<group>"; };
 		F283F83F12031FAE00346265 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
@@ -101,6 +104,8 @@
 				F283F84012031FAE00346265 /* Session.m */,
 				256AC3D80F4B6AC300CF3369 /* Nodobo_ReplayAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* Nodobo_ReplayAppDelegate.m */,
+				F2766D981209DF3100B3BD62 /* NodoboController.h */,
+				F2766D991209DF3100B3BD62 /* NodoboController.m */,
 				F283F82512031DDA00346265 /* NodoboView.h */,
 				F283F82412031DDA00346265 /* NodoboView.m */,
 			);
@@ -322,6 +327,7 @@
 				F2F244421205FADB006C6536 /* FMDatabaseAdditions.m in Sources */,
 				F2F244431205FADB006C6536 /* FMResultSet.m in Sources */,
 				F2F244F812060791006C6536 /* Touch.m in Sources */,
+				F2766D9A1209DF3100B3BD62 /* NodoboController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
