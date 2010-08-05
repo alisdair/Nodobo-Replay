@@ -57,6 +57,7 @@
     [self.pause setTitle: @"Play"];
     [self.pause setAction: @selector(play:)];
 }
+
 - (void) resetTimer: (NSTimer *) timer
 {
     [self updateInteraction];
