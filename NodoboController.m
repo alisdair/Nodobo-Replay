@@ -109,7 +109,6 @@
     else if ([self.thisInteraction isKindOfClass: [Orientation class]])
     {
         Orientation * orientation = (Orientation *) self.thisInteraction;
-        NSLog(@"Found orientation: %d", orientation.rotation);
         view.rotated = (orientation.rotation == 1);
         [view resizeWindow];
     }
