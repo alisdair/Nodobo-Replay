@@ -172,6 +172,24 @@
     if (view.rotated != rotated)
         view.rotated = rotated;
     
+    NSRect sliderFrame = [self.slider frame];
+    NSRect oldFrame = [[view window] frame];
+    [view resizeWindow];
+    NSRect newFrame = [[view window] frame];
+    
+    if (newFrame.size.width != oldFrame.size.width)
+    {
+        CGFloat oldSliderWidth = sliderFrame.size.width;
+        CGFloat newSliderWidth = newFrame.size.width - (oldFrame.size.width - sliderFrame.size.width);
+        
+        CGFloat oldSliderKnobX = sliderFrame.origin.x + oldSliderWidth * [self.slider floatValue];
+        CGFloat newSliderKnobX = sliderFrame.origin.x + newSliderWidth * [self.slider floatValue];
+        CGFloat deltaX = newSliderKnobX - oldSliderKnobX;
+        
+        newFrame.origin.x -= deltaX;
+        [[view window] setFrameOrigin: newFrame.origin];
+    }
+    
     if ([[pause title] isEqual: @"Play"])        
         [self updateInteraction];
     else
