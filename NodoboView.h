@@ -12,10 +12,12 @@
 @interface NodoboView : NSView {
     Screen * screen;
     Touch * touch;
+    BOOL rotated;
 }
 
 @property(retain) Screen * screen;
 @property(retain) Touch * touch;
+@property(assign) BOOL rotated;
 
 - (void) resizeWindow;
 

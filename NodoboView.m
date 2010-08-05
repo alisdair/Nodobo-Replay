@@ -11,6 +11,7 @@
 
 @synthesize screen;
 @synthesize touch;
+@synthesize rotated;
 
 - (void) resizeWindow
 {
@@ -20,8 +21,16 @@
     NSRect windowFrame = [[self window] frame];
     NSRect viewFrame = [self frame];
     NSSize imageSize = [self.screen.image size];
+    if (rotated)
+    {
+        CGFloat t = imageSize.width;
+        imageSize.width = imageSize.height;
+        imageSize.height = t;
+    }
+    
     CGFloat width = windowFrame.size.width - viewFrame.size.width + imageSize.width;
     CGFloat height = windowFrame.size.height - viewFrame.size.height + imageSize.height;
+    
     windowFrame = NSMakeRect(windowFrame.origin.x, windowFrame.origin.y, width, height);
     
     [[self window] setFrame: windowFrame display: YES];
@@ -32,6 +41,21 @@
 {
     if (self.screen == nil || self.screen.image == nil)
         return;
+    
+    NSGraphicsContext *context = [NSGraphicsContext currentContext];
+    [context saveGraphicsState];
+
+    if (rotated)
+    {
+        double rotateDeg = 90;
+        NSAffineTransform *rotate = [[[NSAffineTransform alloc] init] autorelease];
+        
+        NSSize imageSize = [self.screen.image size];
+        [rotate translateXBy: imageSize.height yBy: 0.0];
+        [rotate rotateByDegrees:rotateDeg];
+        [rotate concat];
+    }
+    
     NSImage * image = self.screen.image;
     [image drawAtPoint:NSZeroPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
     
@@ -49,6 +73,8 @@
         
         [[NSBezierPath bezierPathWithOvalInRect: fingerRect] fill];
     }
+    
+    [context restoreGraphicsState];
 }
 
 - (void) dealloc

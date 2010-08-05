@@ -105,7 +105,15 @@
     }
     else if ([self.thisInteraction isKindOfClass: [Orientation class]])
     {
-        NSLog(@"Rotating!");
+        Orientation * orientation = (Orientation *) self.thisInteraction;
+        
+        if (orientation.rotation == 1)
+            view.rotated = YES;
+        else
+            view.rotated = NO;
+        
+        [view resizeWindow];
+        [view setNeedsDisplay: YES];
     }
 }
 
@@ -145,6 +153,7 @@
     while (self.nextInteraction != nil)
     {
         self.nextInteraction = [enumerator nextObject];
+        
         if ([self.nextInteraction.timestamp timeIntervalSinceDate: now] >= 0.0)
         {
             break;
