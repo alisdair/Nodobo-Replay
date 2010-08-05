@@ -100,7 +100,7 @@
         [NSTimer scheduledTimerWithTimeInterval: 0.75 target: self
                                        selector: @selector(resetTouch:)
                                        userInfo: nil repeats: NO];
-    }    
+    }
 }
 
 - (void) updateLabel
