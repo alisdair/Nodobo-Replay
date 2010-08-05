@@ -192,6 +192,7 @@
     {
         [self updateInteraction];
         [self updateLabel];
+        [self updateSlider];
     }
     else
     {
