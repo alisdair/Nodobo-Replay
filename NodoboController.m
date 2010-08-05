@@ -136,7 +136,7 @@
     NSTimeInterval total = [end timeIntervalSinceDate: start];
     NSTimeInterval interval = [now timeIntervalSinceDate: start];
     
-    [slider setFloatValue: interval/total];
+    [self.slider setFloatValue: interval/total];
 }
 
 - (IBAction) scrub: (id) sender
@@ -148,7 +148,7 @@
     NSDate * start = [(Screen * )[self.session.screens objectAtIndex: 0] timestamp];
     NSDate * end = [(Screen * )[self.session.screens lastObject] timestamp];
     NSTimeInterval total = [end timeIntervalSinceDate: start];
-    NSDate * now = [start dateByAddingTimeInterval: total * [slider floatValue]];
+    NSDate * now = [start dateByAddingTimeInterval: total * [self.slider floatValue]];
     
     while (self.nextInteraction != nil)
     {
