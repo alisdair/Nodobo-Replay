@@ -27,6 +27,7 @@
 {
     self.enumerator = [self.session.interactions objectEnumerator];
     view.screen = [self.session.screens objectAtIndex: 0];
+    view.rotated = NO;
     view.touch = nil;
     
     // Skip the start of the interactions until the first screen
@@ -110,14 +111,8 @@
     else if ([self.thisInteraction isKindOfClass: [Orientation class]])
     {
         Orientation * orientation = (Orientation *) self.thisInteraction;
-        
-        if (orientation.rotation == 1)
-            view.rotated = YES;
-        else
-            view.rotated = NO;
-        
+        view.rotated = (orientation.rotation == 1);
         [view resizeWindow];
-        [view setNeedsDisplay: YES];
     }
 }
 
@@ -140,7 +135,7 @@
     NSTimeInterval total = [end timeIntervalSinceDate: start];
     NSTimeInterval interval = [now timeIntervalSinceDate: start];
     
-    [slider setFloatValue: interval/total];
+    [self.slider setFloatValue: interval/total];
 }
 
 - (IBAction) scrub: (id) sender
@@ -152,17 +147,30 @@
     NSDate * start = [(Screen * )[self.session.screens objectAtIndex: 0] timestamp];
     NSDate * end = [(Screen * )[self.session.screens lastObject] timestamp];
     NSTimeInterval total = [end timeIntervalSinceDate: start];
-    NSDate * now = [start dateByAddingTimeInterval: total * [slider floatValue]];
+    NSDate * now = [start dateByAddingTimeInterval: total * [self.slider floatValue]];
     
+    BOOL rotated = view.rotated;
     while (self.nextInteraction != nil)
     {
         self.nextInteraction = [enumerator nextObject];
+        
+        if ([self.nextInteraction isKindOfClass: [Screen class]])
+        {
+            view.screen = (Screen *) self.nextInteraction;
+        }
+        if ([self.nextInteraction isKindOfClass: [Orientation class]])
+        {
+            Orientation * orientation = (Orientation *) self.nextInteraction;
+            rotated = (orientation.rotation == 1);
+        }
         
         if ([self.nextInteraction.timestamp timeIntervalSinceDate: now] >= 0.0)
         {
             break;
         }
     }
+    if (view.rotated != rotated)
+        view.rotated = rotated;
     
     if ([[pause title] isEqual: @"Play"])        
         [self updateInteraction];
