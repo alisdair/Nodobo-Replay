@@ -18,11 +18,4 @@
     [super dealloc];
 }
 
-- (NSString *) preciseTimestamp
-{
-    NSDateFormatter * f = [NSDateFormatter new];
-    [f setDateFormat:@"HH:mm:ss.SSS"];
-    return [f stringFromDate: self.timestamp];
-}
-
 @end
