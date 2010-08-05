@@ -64,7 +64,8 @@
     
     if (self.nextInteraction == nil)
     {
-        self.enumerator = nil;
+        [self rewind];
+        [self pause: nil];
     }
     else
     {
