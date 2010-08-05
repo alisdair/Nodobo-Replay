@@ -188,10 +188,15 @@
         [[view window] setFrameOrigin: newFrame.origin];
     }
     
-    if ([[pause title] isEqual: @"Play"])        
+    if ([[pause title] isEqual: @"Play"])
+    {
         [self updateInteraction];
+        [self updateLabel];
+    }
     else
+    {
         [self resetTimer: nil];
+    }
 }
 
 - (void) dealloc
