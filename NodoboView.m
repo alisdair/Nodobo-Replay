@@ -54,16 +54,18 @@
 
     if (rotated)
     {
-        double rotateDeg = 90;
-        NSAffineTransform *rotate = [[[NSAffineTransform alloc] init] autorelease];
-        
+        NSAffineTransform * rotate = [NSAffineTransform transform];
         [rotate translateXBy: imageSize.height yBy: 0.0];
-        [rotate rotateByDegrees:rotateDeg];
+        [rotate rotateByDegrees: 90.0];
         [rotate concat];
     }
     
-    NSPoint origin = NSMakePoint((imageSize.height - imageSize.width)/2.0, 0.0);
-    [image drawAtPoint: origin fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1];
+    CGFloat offset = (ABS(imageSize.height - imageSize.width))/2.0;
+    NSAffineTransform * centre = [NSAffineTransform transform];
+    [centre translateXBy: offset yBy: 0.0];
+    [centre concat];
+    
+    [image drawAtPoint: NSZeroPoint fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1];
     
     if (self.touch != nil)
     {
