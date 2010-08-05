@@ -28,8 +28,12 @@
         imageSize.height = t;
     }
     
+    CGFloat max = MAX(imageSize.width, imageSize.height);
+    imageSize = NSMakeSize(max, max);
+    
     CGFloat width = windowFrame.size.width - viewFrame.size.width + imageSize.width;
     CGFloat height = windowFrame.size.height - viewFrame.size.height + imageSize.height;
+    
     
     windowFrame = NSMakeRect(windowFrame.origin.x, windowFrame.origin.y, width, height);
     
@@ -45,19 +49,21 @@
     NSGraphicsContext *context = [NSGraphicsContext currentContext];
     [context saveGraphicsState];
 
+    NSImage * image = self.screen.image;
+    NSSize imageSize = [image size];
+
     if (rotated)
     {
         double rotateDeg = 90;
         NSAffineTransform *rotate = [[[NSAffineTransform alloc] init] autorelease];
         
-        NSSize imageSize = [self.screen.image size];
         [rotate translateXBy: imageSize.height yBy: 0.0];
         [rotate rotateByDegrees:rotateDeg];
         [rotate concat];
     }
     
-    NSImage * image = self.screen.image;
-    [image drawAtPoint:NSZeroPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+    NSPoint origin = NSMakePoint((imageSize.height - imageSize.width)/2.0, 0.0);
+    [image drawAtPoint: origin fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1];
     
     if (self.touch != nil)
     {
