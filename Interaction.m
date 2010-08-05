@@ -20,7 +20,7 @@
 
 - (NSString *) preciseTimestamp
 {
-    NSDateFormatter * f = [NSDateFormatter new];
+    NSDateFormatter * f = [[[NSDateFormatter alloc] init] autorelease];
     [f setDateFormat:@"HH:mm:ss.SSS"];
     return [f stringFromDate: self.timestamp];
 }
