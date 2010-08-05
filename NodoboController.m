@@ -59,13 +59,15 @@
     [self.pause setTitle: @"Play"];
     [self.pause setAction: @selector(play:)];
 }
+
 - (void) resetTimer: (NSTimer *) timer
 {
     [self updateInteraction];
     
     if (self.nextInteraction == nil)
     {
-        self.enumerator = nil;
+        [self pause: self];
+        [self rewind];
     }
     else
     {
@@ -74,10 +76,9 @@
         self.timer = [NSTimer scheduledTimerWithTimeInterval: i target: self
                                                     selector: @selector(resetTimer:)
                                                     userInfo: nil repeats: NO];
+        [self updateLabel];
+        [self updateSlider];
     }
-        
-    [self updateLabel];
-    [self updateSlider];
 }
 
 - (void) resetTouch: (NSTimer *) timer
