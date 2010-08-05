@@ -26,16 +26,16 @@
     NSTimer * timer;
 }
 
-@property (assign) IBOutlet NodoboView * view;
-@property (assign) IBOutlet NSTextField * label;
-@property (assign) IBOutlet NSButton * pause;
-@property (assign) IBOutlet NSSlider * slider;
+@property(assign) IBOutlet NodoboView * view;
+@property(assign) IBOutlet NSTextField * label;
+@property(assign) IBOutlet NSButton * pause;
+@property(assign) IBOutlet NSSlider * slider;
 
-@property (retain) Session * session;
-@property (retain) NSEnumerator * enumerator;
-@property (retain) Interaction * thisInteraction;
-@property (retain) Interaction * nextInteraction;
-@property (assign) NSTimer * timer;
+@property(retain) Session * session;
+@property(retain) NSEnumerator * enumerator;
+@property(retain) Interaction * thisInteraction;
+@property(retain) Interaction * nextInteraction;
+@property(assign) NSTimer * timer;
 
 - (void) rewind;
 - (IBAction) pause: (id) sender;

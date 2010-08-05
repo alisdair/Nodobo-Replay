@@ -1,34 +1,35 @@
 //
-//  Input.m
+//  Clue.m
 //  Nodobo Replay
 //
 //  Created by Alisdair McDiarmid on 01/08/2010.
 //  Copyright 2010 Nodobo. All rights reserved.
 //
 
-#import "Input.h"
+#import "Clue.h"
 #import "Touch.h"
+#import "Orientation.h"
 #import "FMDatabase.h"
 
-@implementation Input
+@implementation Clue
 
-+ (NSArray *) inputsFromDatabaseAtPath: (NSString *) path
++ (NSArray *) cluesFromDatabaseAtPath: (NSString *) path
 {
     FMDatabase * db = [FMDatabase databaseWithPath: path];
     if (![db open])
     {
-        NSLog(@"Error opening inputs database: %@", [db lastErrorMessage]);
+        NSLog(@"Error opening clues database: %@", [db lastErrorMessage]);
         return [NSArray array];        
     }
 
-    FMResultSet * rs = [db executeQuery: @"SELECT * FROM interactions;"];
+    FMResultSet * rs = [db executeQuery: @"SELECT * FROM clues;"];
     if ([db hadError])
     {
-        NSLog(@"Error selecting inputs: %@", [db lastErrorMessage]);
+        NSLog(@"Error selecting clues: %@", [db lastErrorMessage]);
         return [NSArray array];        
     }
 
-    NSMutableArray * inputs = [NSMutableArray array];
+    NSMutableArray * clues = [NSMutableArray array];
     while([rs next])
     {
         NSString * kind = [rs stringForColumn:@"kind"];
@@ -36,15 +37,15 @@
         long msSince1970 = [rs longForColumn:@"datetime"];
         NSDate * timestamp = [NSDate dateWithTimeIntervalSince1970: msSince1970/1000.0];
         
-        Input * input = [Input inputWithKind: kind data: data timestamp: timestamp];
-        if (input != nil)
-            [inputs addObject: input];
+        Clue * clue = [Clue clueWithKind: kind data: data timestamp: timestamp];
+        if (clue != nil)
+            [clues addObject: clue];
     }
     
-    return [NSArray arrayWithArray: inputs];
+    return [NSArray arrayWithArray: clues];
 }
 
-+ (Input *) inputWithKind: (NSString *) kind data: (NSString *) data timestamp: (NSDate * ) timestamp;
++ (Clue *) clueWithKind: (NSString *) kind data: (NSString *) data timestamp: (NSDate * ) timestamp;
 {
     if ([kind isEqualTo: @"touch"])
     {
@@ -58,6 +59,10 @@
         CGFloat y = [[coords objectAtIndex: 1] floatValue];
         NSPoint point = NSMakePoint(x, y);
         return [Touch touchWithPoint: point timestamp: timestamp];
+    }
+    else if ([kind isEqualTo: @"orientation"])
+    {
+        return [Orientation orientationWithRotation: [data integerValue] timestamp: timestamp];
     }
     
     return nil;

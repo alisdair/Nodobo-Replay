@@ -7,10 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "Input.h"
+#import "Clue.h"
 
 
-@interface Touch : Input {
+@interface Touch : Clue {
     NSPoint point;
 }
 

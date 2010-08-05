@@ -7,6 +7,7 @@
 //
 
 #import "NodoboController.h"
+#import "Orientation.h"
 
 
 @implementation NodoboController
@@ -86,6 +87,7 @@
     self.thisInteraction = self.nextInteraction;
     self.nextInteraction = [enumerator nextObject];
     
+    // FIXME: there has got to be a better way to do this...
     // Screen: update the main view display
     if ([self.thisInteraction isKindOfClass: [Screen class]])
     {
@@ -100,7 +102,19 @@
         [NSTimer scheduledTimerWithTimeInterval: 0.75 target: self
                                        selector: @selector(resetTouch:)
                                        userInfo: nil repeats: NO];
-    }    
+    }
+    else if ([self.thisInteraction isKindOfClass: [Orientation class]])
+    {
+        Orientation * orientation = (Orientation *) self.thisInteraction;
+        
+        if (orientation.rotation == 1)
+            view.rotated = YES;
+        else
+            view.rotated = NO;
+        
+        [view resizeWindow];
+        [view setNeedsDisplay: YES];
+    }
 }
 
 - (void) updateLabel
@@ -139,6 +153,7 @@
     while (self.nextInteraction != nil)
     {
         self.nextInteraction = [enumerator nextObject];
+        
         if ([self.nextInteraction.timestamp timeIntervalSinceDate: now] >= 0.0)
         {
             break;

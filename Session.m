@@ -8,7 +8,7 @@
 
 #import "Session.h"
 #import "Screen.h"
-#import "Input.h"
+#import "Clue.h"
 
 
 @implementation Session
@@ -40,12 +40,10 @@
 - (void) readInteractions
 {
     screens = [Screen screensFromDirectoryAtPath: self.path];
-    NSArray * contexts = [NSArray array];
-    NSArray * inputs = [Input inputsFromDatabaseAtPath: [self.path stringByAppendingPathComponent: @"interactions.sqlite3"]];
+    NSString * database = [self.path stringByAppendingPathComponent: @"clues.sqlite3"];
+    NSArray * clues = [Clue cluesFromDatabaseAtPath: database];
     
-    NSArray * merged;
-    merged = [screens arrayByAddingObjectsFromArray: contexts];
-    merged = [merged arrayByAddingObjectsFromArray: inputs];
+    NSArray * merged = [screens arrayByAddingObjectsFromArray: clues];
 
     NSArray *sds = [NSArray arrayWithObject:
                     [[[NSSortDescriptor alloc] initWithKey: @"timestamp" ascending: YES] autorelease]];
