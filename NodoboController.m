@@ -13,8 +13,7 @@
 @implementation NodoboController
 
 @synthesize view;
-@synthesize nowLabel;
-@synthesize endLabel;
+@synthesize label;
 @synthesize pause;
 @synthesize slider;
 
@@ -24,20 +23,6 @@
 @synthesize nextInteraction;
 @synthesize timer;
 
-- (void) setSession: (Session *) s
-{
-    [session autorelease];
-    session = [s retain];
-    
-    NSDate * start = [(Screen * )[self.session.screens objectAtIndex: 0] timestamp];
-    NSDate * end = [(Screen * )[self.session.screens lastObject] timestamp];
-    NSTimeInterval interval = [end timeIntervalSinceDate: start];
-    
-    NSInteger minutes = (NSInteger) interval / 60;
-    NSInteger seconds = (NSInteger) interval % 60;
-    [endLabel setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
-}
-
 - (void) rewind
 {
     self.enumerator = [self.session.interactions objectEnumerator];
@@ -46,7 +31,7 @@
     view.touch = nil;
     
     // Skip the start of the interactions until the first screen
-    for (Interaction * interaction in self.enumerator)
+    for (Interaction * interaction in enumerator)
         if (interaction == nil || interaction == view.screen)
             break;
     
@@ -103,7 +88,7 @@
 - (void) updateInteraction
 {
     self.thisInteraction = self.nextInteraction;
-    self.nextInteraction = [self.enumerator nextObject];
+    self.nextInteraction = [enumerator nextObject];
     
     // FIXME: there has got to be a better way to do this...
     // Screen: update the main view display
@@ -137,7 +122,7 @@
     
     NSInteger minutes = (NSInteger) interval / 60;
     NSInteger seconds = (NSInteger) interval % 60;
-    [nowLabel setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
+    [label setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
 }
 
 - (void) updateSlider
@@ -165,7 +150,7 @@
     BOOL rotated = view.rotated;
     while (self.nextInteraction != nil)
     {
-        self.nextInteraction = [self.enumerator nextObject];
+        self.nextInteraction = [enumerator nextObject];
         
         if ([self.nextInteraction isKindOfClass: [Screen class]])
         {

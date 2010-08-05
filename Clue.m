@@ -34,7 +34,7 @@
     {
         NSString * kind = [rs stringForColumn:@"kind"];
         NSString * data = [rs stringForColumn:@"data"];
-        long long msSince1970 = [rs longLongIntForColumn:@"datetime"];
+        long msSince1970 = [rs longForColumn:@"datetime"];
         NSDate * timestamp = [NSDate dateWithTimeIntervalSince1970: msSince1970/1000.0];
         
         Clue * clue = [Clue clueWithKind: kind data: data timestamp: timestamp];
