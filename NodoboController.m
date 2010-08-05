@@ -37,9 +37,6 @@
     
     self.thisInteraction = nil;
     self.nextInteraction = view.screen;
-    
-    [label setStringValue: @"00:00"];
-    [slider setFloatValue: 0.0];
 }
 
 - (IBAction) play: (id) sender
@@ -67,8 +64,8 @@
     
     if (self.nextInteraction == nil)
     {
-        [self pause: self];
         [self rewind];
+        [self pause: nil];
     }
     else
     {
@@ -77,9 +74,10 @@
         self.timer = [NSTimer scheduledTimerWithTimeInterval: i target: self
                                                     selector: @selector(resetTimer:)
                                                     userInfo: nil repeats: NO];
-        [self updateLabel];
-        [self updateSlider];
     }
+        
+    [self updateLabel];
+    [self updateSlider];
 }
 
 - (void) resetTouch: (NSTimer *) timer
