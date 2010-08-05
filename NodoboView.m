@@ -54,11 +54,9 @@
 
     if (rotated)
     {
-        double rotateDeg = 90;
-        NSAffineTransform *rotate = [[[NSAffineTransform alloc] init] autorelease];
-        
+        NSAffineTransform * rotate = [NSAffineTransform transform];
         [rotate translateXBy: imageSize.height yBy: 0.0];
-        [rotate rotateByDegrees:rotateDeg];
+        [rotate rotateByDegrees: 90.0];
         [rotate concat];
     }
     
