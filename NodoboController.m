@@ -36,6 +36,9 @@
     
     self.thisInteraction = nil;
     self.nextInteraction = view.screen;
+    
+    [label setStringValue: @"00:00"];
+    [slider setFloatValue: 0.0];
 }
 
 - (IBAction) play: (id) sender
