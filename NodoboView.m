@@ -25,7 +25,6 @@
     windowFrame = NSMakeRect(windowFrame.origin.x, windowFrame.origin.y, width, height);
     
     [[self window] setFrame: windowFrame display: YES];
-    [[self window] center];
     [[self window] makeKeyAndOrderFront: self];
 }
 

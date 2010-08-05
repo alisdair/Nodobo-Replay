@@ -35,6 +35,7 @@
     [controller setSession: session];
     [controller play: nil];
     [view resizeWindow];
+    [window center];
 }
 
 @end
