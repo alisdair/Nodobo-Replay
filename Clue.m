@@ -8,6 +8,7 @@
 
 #import "Clue.h"
 #import "Touch.h"
+#import "Orientation.h"
 #import "FMDatabase.h"
 
 @implementation Clue
@@ -58,6 +59,10 @@
         CGFloat y = [[coords objectAtIndex: 1] floatValue];
         NSPoint point = NSMakePoint(x, y);
         return [Touch touchWithPoint: point timestamp: timestamp];
+    }
+    else if ([kind isEqualTo: @"orientation"])
+    {
+        return [Orientation orientationWithRotation: [data integerValue] timestamp: timestamp];
     }
     
     return nil;
