@@ -18,7 +18,7 @@
 		F2F241D91204D3B0006C6536 /* Screen.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F241D81204D3B0006C6536 /* Screen.m */; };
 		F2F241DD1204D3C9006C6536 /* TestScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F241DC1204D3C9006C6536 /* TestScreen.m */; };
 		F2F2430C1204F097006C6536 /* Interaction.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F2430B1204F097006C6536 /* Interaction.m */; };
-		F2F244361205FA00006C6536 /* Input.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F244351205FA00006C6536 /* Input.m */; };
+		F2F244361205FA00006C6536 /* Clue.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F244351205FA00006C6536 /* Clue.m */; };
 		F2F244411205FADB006C6536 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F2443C1205FADB006C6536 /* FMDatabase.m */; };
 		F2F244421205FADB006C6536 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F2443E1205FADB006C6536 /* FMDatabaseAdditions.m */; };
 		F2F244431205FADB006C6536 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F244401205FADB006C6536 /* FMResultSet.m */; };
@@ -60,8 +60,8 @@
 		F2F241D81204D3B0006C6536 /* Screen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Screen.m; sourceTree = "<group>"; };
 		F2F241DC1204D3C9006C6536 /* TestScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestScreen.m; sourceTree = "<group>"; };
 		F2F2430B1204F097006C6536 /* Interaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interaction.m; sourceTree = "<group>"; };
-		F2F244341205FA00006C6536 /* Input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Input.h; sourceTree = "<group>"; };
-		F2F244351205FA00006C6536 /* Input.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Input.m; sourceTree = "<group>"; };
+		F2F244341205FA00006C6536 /* Clue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clue.h; sourceTree = "<group>"; };
+		F2F244351205FA00006C6536 /* Clue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clue.m; sourceTree = "<group>"; };
 		F2F2443B1205FADB006C6536 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		F2F2443C1205FADB006C6536 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		F2F2443D1205FADB006C6536 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -193,8 +193,8 @@
 		F2F2432A1204F0EA006C6536 /* Interactions */ = {
 			isa = PBXGroup;
 			children = (
-				F2F244341205FA00006C6536 /* Input.h */,
-				F2F244351205FA00006C6536 /* Input.m */,
+				F2F244341205FA00006C6536 /* Clue.h */,
+				F2F244351205FA00006C6536 /* Clue.m */,
 				F2F240171203A3A6006C6536 /* Interaction.h */,
 				F2F2430B1204F097006C6536 /* Interaction.m */,
 				F2F241D71204D3B0006C6536 /* Screen.h */,
@@ -322,7 +322,7 @@
 				F283F84112031FAE00346265 /* Session.m in Sources */,
 				F2F241D91204D3B0006C6536 /* Screen.m in Sources */,
 				F2F2430C1204F097006C6536 /* Interaction.m in Sources */,
-				F2F244361205FA00006C6536 /* Input.m in Sources */,
+				F2F244361205FA00006C6536 /* Clue.m in Sources */,
 				F2F244411205FADB006C6536 /* FMDatabase.m in Sources */,
 				F2F244421205FADB006C6536 /* FMDatabaseAdditions.m in Sources */,
 				F2F244431205FADB006C6536 /* FMResultSet.m in Sources */,
