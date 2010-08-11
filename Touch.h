@@ -18,7 +18,7 @@
 @property(readonly) NSPoint point;
 @property(readonly) CGFloat pressure;
 
-+ (Touch *) touchWithPoint: (NSPoint) p timestamp: (NSDate * ) t;
-- (Touch *) initWithPoint: (NSPoint) p timestamp: (NSDate * ) t;
++ (Touch *) touchWithPoint: (NSPoint) p pressure: (CGFloat) pr timestamp: (NSDate * ) t;
+- (Touch *) initWithPoint: (NSPoint) p pressure: (CGFloat) pr timestamp: (NSDate * ) t;
 
 @end
