@@ -15,7 +15,8 @@
 
 @interface NodoboController : NSObject {
     NodoboView * view;
-    NSTextField * label;
+    NSTextField * nowLabel;
+    NSTextField * endLabel;
     NSButton * pause;
     NSSlider * slider;
     
@@ -27,7 +28,8 @@
 }
 
 @property(assign) IBOutlet NodoboView * view;
-@property(assign) IBOutlet NSTextField * label;
+@property(assign) IBOutlet NSTextField * nowLabel;
+@property(assign) IBOutlet NSTextField * endLabel;
 @property(assign) IBOutlet NSButton * pause;
 @property(assign) IBOutlet NSSlider * slider;
 

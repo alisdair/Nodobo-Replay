@@ -13,7 +13,8 @@
 @implementation NodoboController
 
 @synthesize view;
-@synthesize label;
+@synthesize nowLabel;
+@synthesize endLabel;
 @synthesize pause;
 @synthesize slider;
 
@@ -22,6 +23,20 @@
 @synthesize thisInteraction;
 @synthesize nextInteraction;
 @synthesize timer;
+
+- (void) setSession: (Session *) s
+{
+    [session autorelease];
+    session = [s retain];
+    
+    NSDate * start = [(Screen * )[self.session.screens objectAtIndex: 0] timestamp];
+    NSDate * end = [(Screen * )[self.session.screens lastObject] timestamp];
+    NSTimeInterval interval = [end timeIntervalSinceDate: start];
+    
+    NSInteger minutes = (NSInteger) interval / 60;
+    NSInteger seconds = (NSInteger) interval % 60;
+    [endLabel setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
+}
 
 - (void) rewind
 {
@@ -122,7 +137,7 @@
     
     NSInteger minutes = (NSInteger) interval / 60;
     NSInteger seconds = (NSInteger) interval % 60;
-    [label setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
+    [nowLabel setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
 }
 
 - (void) updateSlider
