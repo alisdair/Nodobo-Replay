@@ -12,6 +12,7 @@
 @implementation Touch
 
 @synthesize point;
+@synthesize pressure;
 
 + (Touch *) touchWithPoint: (NSPoint) p timestamp: (NSDate * ) t
 {
