@@ -70,7 +70,8 @@
     if (self.touch != nil)
     {
         NSRect fingerRect;
-        CGFloat radius = self.touch.pressure / 4;
+        CGFloat radius = 20.0;
+        radius = radius * (self.touch.pressure / 50.0);
         
         fingerRect.origin.x = self.touch.point.x - radius;
         fingerRect.origin.y = self.touch.point.y - radius;
