@@ -50,15 +50,16 @@
     if ([kind isEqualTo: @"touch"])
     {
         NSArray * coords = [data componentsSeparatedByString: @","];
-        if ([coords count] != 2)
+        if ([coords count] != 3)
         {
             NSLog(@"Invalid touch found: data='%@', timestamp='%@'", data, timestamp);
             return nil;
         }
         CGFloat x = [[coords objectAtIndex: 0] floatValue];
         CGFloat y = [[coords objectAtIndex: 1] floatValue];
+        CGFloat pressure = [[coords objectAtIndex:2] floatValue];
         NSPoint point = NSMakePoint(x, y);
-        return [Touch touchWithPoint: point timestamp: timestamp];
+        return [Touch touchWithPoint: point pressure: pressure timestamp: timestamp];
     }
     else if ([kind isEqualTo: @"orientation"])
     {
