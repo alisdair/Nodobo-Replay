@@ -14,12 +14,12 @@
 @synthesize point;
 @synthesize pressure;
 
-+ (Touch *) touchWithPoint: (NSPoint) p timestamp: (NSDate * ) t
++ (Touch *) touchWithPoint: (NSPoint) p pressure: (CGFloat) pr timestamp: (NSDate * ) t
 {
-    return [[[Touch alloc] initWithPoint: p timestamp: t] autorelease];
+    return [[[Touch alloc] initWithPoint: p pressure: pr timestamp: t] autorelease];
 }
 
-- (Touch *) initWithPoint: (NSPoint) p timestamp: (NSDate * ) t
+- (Touch *) initWithPoint: (NSPoint) p pressure: (CGFloat) pr timestamp: (NSDate * ) t
 {
     self = [super init];
     
@@ -27,6 +27,7 @@
         return nil;
     
     point = NSMakePoint(p.x/2, 400.0 - p.y/2);
+    pressure = pr;
     timestamp = [t retain];
     
     return self;
