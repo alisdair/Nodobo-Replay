@@ -21,19 +21,10 @@
     NSRect windowFrame = [[self window] frame];
     NSRect viewFrame = [self frame];
     NSSize imageSize = [self.screen.image size];
-    if (rotated)
-    {
-        CGFloat t = imageSize.width;
-        imageSize.width = imageSize.height;
-        imageSize.height = t;
-    }
+    CGFloat viewSize = MAX(imageSize.width, imageSize.height);
     
-    CGFloat max = MAX(imageSize.width, imageSize.height);
-    imageSize = NSMakeSize(max, max);
-    
-    CGFloat width = windowFrame.size.width - viewFrame.size.width + imageSize.width;
-    CGFloat height = windowFrame.size.height - viewFrame.size.height + imageSize.height;
-    
+    CGFloat width = windowFrame.size.width - viewFrame.size.width + viewSize;
+    CGFloat height = windowFrame.size.height - viewFrame.size.height + viewSize;
     
     windowFrame = NSMakeRect(windowFrame.origin.x, windowFrame.origin.y, width, height);
     
