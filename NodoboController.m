@@ -95,30 +95,20 @@
     [self updateSlider];
 }
 
-- (void) resetTouch: (NSTimer *) timer
-{
-    view.touch = nil;
-}
-
 - (void) updateInteraction
 {
     self.thisInteraction = self.nextInteraction;
     self.nextInteraction = [self.enumerator nextObject];
     
-    // FIXME: there has got to be a better way to do this...
-    // Screen: update the main view display
     if ([self.thisInteraction isKindOfClass: [Screen class]])
     {
         view.screen = (Screen *) self.thisInteraction;
-        [view setNeedsDisplay: YES];
     }
-    // Touch: set up a touch to be displayed for a bit
     else if ([self.thisInteraction isKindOfClass: [Touch class]])
     {
         view.touch = (Touch *) self.thisInteraction;
-        [view setNeedsDisplay: YES];
-        [NSTimer scheduledTimerWithTimeInterval: 0.75 target: self
-                                       selector: @selector(resetTouch:)
+        [NSTimer scheduledTimerWithTimeInterval: 0.75 target: view
+                                       selector: @selector(clearTouch:)
                                        userInfo: nil repeats: NO];
     }
     else if ([self.thisInteraction isKindOfClass: [Orientation class]])

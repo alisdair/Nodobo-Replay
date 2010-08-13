@@ -13,6 +13,25 @@
 @synthesize touch;
 @synthesize rotated;
 
+- (void) setScreen:(Screen *)s
+{
+    [screen autorelease];
+    screen = [s retain];
+    [self setNeedsDisplay: YES];
+}
+
+- (void) setTouch:(Touch *)t
+{
+    [touch autorelease];
+    touch = [t retain];
+    [self setNeedsDisplay: YES];
+}
+
+- (void) clearTouch: (id) obj
+{
+    self.touch = nil;
+}
+
 - (void) resizeWindow
 {
     if (self.screen == nil || self.screen.image == nil)

@@ -44,7 +44,6 @@
 - (IBAction) play: (id) sender;
 
 - (void) resetTimer: (NSTimer *) timer;
-- (void) resetTouch: (NSTimer *) timer;
 - (void) updateInteraction;
 - (void) updateLabel;
 - (void) updateSlider;
