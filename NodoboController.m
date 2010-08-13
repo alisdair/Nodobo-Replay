@@ -29,13 +29,9 @@
     [session autorelease];
     session = [s retain];
     
-    NSDate * start = [(Screen * )[self.session.screens objectAtIndex: 0] timestamp];
-    NSDate * end = [(Screen * )[self.session.screens lastObject] timestamp];
-    NSTimeInterval interval = [end timeIntervalSinceDate: start];
-    
-    NSInteger minutes = (NSInteger) interval / 60;
-    NSInteger seconds = (NSInteger) interval % 60;
-    [endLabel setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
+    [self setTimeLabel: endLabel
+                 start: [(Screen * )[self.session.screens objectAtIndex: 0] timestamp]
+                   end: [(Screen * )[self.session.screens lastObject] timestamp]];
 }
 
 - (void) rewind
@@ -119,15 +115,20 @@
     }
 }
 
-- (void) updateLabel
+- (void) setTimeLabel: (NSTextField *) label start: (NSDate *) start end: (NSDate *) end
 {
-    NSDate * start = [(Screen * )[self.session.screens objectAtIndex: 0] timestamp];
-    NSDate * now = self.thisInteraction.timestamp;
-    NSTimeInterval interval = [now timeIntervalSinceDate: start];
+    NSTimeInterval interval = [end timeIntervalSinceDate: start];
     
     NSInteger minutes = (NSInteger) interval / 60;
     NSInteger seconds = (NSInteger) interval % 60;
-    [nowLabel setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
+    [label setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
+}
+
+- (void) updateLabel
+{
+    [self setTimeLabel: nowLabel
+                 start: [(Screen * )[self.session.screens objectAtIndex: 0] timestamp]
+                   end: self.thisInteraction.timestamp];
 }
 
 - (void) updateSlider

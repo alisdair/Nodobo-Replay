@@ -45,6 +45,7 @@
 
 - (void) resetTimer: (NSTimer *) timer;
 - (void) updateInteraction;
+- (void) setTimeLabel: (NSTextField *) label start: (NSDate *) start end: (NSDate *) end;
 - (void) updateLabel;
 - (void) updateSlider;
 - (IBAction) scrub: (id) sender;
