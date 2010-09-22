@@ -40,11 +40,7 @@
         return nil;
     
     Interaction * interaction = [session.interactions objectAtIndex: ri];
-    
-    if ([[tc identifier] isEqualToString: @"timestamp"])
-        return [interaction timestamp];
-    else
-        return [interaction className];
+    return [interaction performSelector: NSSelectorFromString([tc identifier])];
 }
 
 - (int) numberOfRowsInTableView: (NSTableView *) tv
