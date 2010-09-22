@@ -14,6 +14,7 @@
 @synthesize window;
 @synthesize view;
 @synthesize controller;
+@synthesize tableModel;
 
 - (void) applicationDidFinishLaunching: (NSNotification *) notification
 {
@@ -33,6 +34,7 @@
     NSArray * urls = [panel URLs];
 	Session * session = [Session sessionWithPath: [[urls lastObject] path]];
     [controller setSession: session];
+    [tableModel setSession: session];
     [controller play: nil];
     [view resizeWindow];
     [window center];

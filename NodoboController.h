@@ -12,6 +12,7 @@
 #import "Interaction.h"
 #import "Screen.h"
 #import "Touch.h"
+#import "TableModel.h"
 
 @interface NodoboController : NSObject {
     NodoboView * view;
@@ -19,6 +20,7 @@
     NSTextField * endLabel;
     NSButton * pause;
     NSSlider * slider;
+    TableModel * tableModel;
     
     Session * session;
     Interaction * thisInteraction;
@@ -32,6 +34,7 @@
 @property(assign) IBOutlet NSTextField * endLabel;
 @property(assign) IBOutlet NSButton * pause;
 @property(assign) IBOutlet NSSlider * slider;
+@property(assign) IBOutlet TableModel * tableModel;
 
 @property(retain) Session * session;
 @property(retain) NSEnumerator * enumerator;

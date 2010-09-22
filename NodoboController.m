@@ -17,12 +17,22 @@
 @synthesize endLabel;
 @synthesize pause;
 @synthesize slider;
+@synthesize tableModel;
 
 @synthesize session;
 @synthesize enumerator;
 @synthesize thisInteraction;
 @synthesize nextInteraction;
 @synthesize timer;
+
+- (void) setThisInteraction:(Interaction *) i
+{
+    [thisInteraction autorelease];
+    thisInteraction = [i retain];
+    
+    self.tableModel.current = thisInteraction;
+}
+
 
 - (void) setSession: (Session *) s
 {

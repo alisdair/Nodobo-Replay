@@ -15,6 +15,7 @@
 		F2766D9A1209DF3100B3BD62 /* NodoboController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2766D991209DF3100B3BD62 /* NodoboController.m */; };
 		F283F82612031DDA00346265 /* NodoboView.m in Sources */ = {isa = PBXBuildFile; fileRef = F283F82412031DDA00346265 /* NodoboView.m */; };
 		F283F84112031FAE00346265 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = F283F84012031FAE00346265 /* Session.m */; };
+		F2C5C372124A4C9E00B27C29 /* TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C5C371124A4C9E00B27C29 /* TableModel.m */; };
 		F2EA12AF120B1C7F00FAFA37 /* Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EA12AE120B1C7F00FAFA37 /* Orientation.m */; };
 		F2F241D91204D3B0006C6536 /* Screen.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F241D81204D3B0006C6536 /* Screen.m */; };
 		F2F241DD1204D3C9006C6536 /* TestScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F241DC1204D3C9006C6536 /* TestScreen.m */; };
@@ -56,6 +57,8 @@
 		F283F82512031DDA00346265 /* NodoboView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodoboView.h; sourceTree = "<group>"; };
 		F283F83F12031FAE00346265 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
 		F283F84012031FAE00346265 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
+		F2C5C370124A4C9E00B27C29 /* TableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableModel.h; sourceTree = "<group>"; };
+		F2C5C371124A4C9E00B27C29 /* TableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableModel.m; sourceTree = "<group>"; };
 		F2EA12AD120B1C7F00FAFA37 /* Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Orientation.h; sourceTree = "<group>"; };
 		F2EA12AE120B1C7F00FAFA37 /* Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Orientation.m; sourceTree = "<group>"; };
 		F2F240171203A3A6006C6536 /* Interaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interaction.h; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 				F2766D991209DF3100B3BD62 /* NodoboController.m */,
 				F283F82512031DDA00346265 /* NodoboView.h */,
 				F283F82412031DDA00346265 /* NodoboView.m */,
+				F2C5C370124A4C9E00B27C29 /* TableModel.h */,
+				F2C5C371124A4C9E00B27C29 /* TableModel.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 				F2F244F812060791006C6536 /* Touch.m in Sources */,
 				F2766D9A1209DF3100B3BD62 /* NodoboController.m in Sources */,
 				F2EA12AF120B1C7F00FAFA37 /* Orientation.m in Sources */,
+				F2C5C372124A4C9E00B27C29 /* TableModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
