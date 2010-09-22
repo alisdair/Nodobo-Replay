@@ -13,6 +13,9 @@
 
 @implementation Clue
 
+@synthesize kind;
+@synthesize data;
+
 + (NSArray *) cluesFromDatabaseAtPath: (NSString *) path
 {
     FMDatabase * db = [FMDatabase databaseWithPath: path];
@@ -45,7 +48,7 @@
     return [NSArray arrayWithArray: clues];
 }
 
-+ (Clue *) clueWithKind: (NSString *) kind data: (NSString *) data timestamp: (NSDate * ) timestamp;
++ (Clue *) clueWithKind: (NSString *) kind data: (NSString *) data timestamp: (NSDate * ) timestamp
 {
     if ([kind isEqualTo: @"touch"])
     {
@@ -67,7 +70,32 @@
     {
         return [Orientation orientationWithRotation: [data integerValue] timestamp: timestamp];
     }
-    
-    return nil;
+    else
+    {
+        return [[[Clue alloc] initWithKind: kind data: data timestamp: timestamp] autorelease];
+    }
 }
+
+- (NSString *) kind
+{
+    if (kind != nil)
+        return kind;
+    else
+        return [super kind];
+}
+
+- (Clue *) initWithKind: (NSString *) k data: (NSString *) d timestamp: (NSDate * ) t
+{
+    self = [super init];
+    
+    if (self == nil)
+        return nil;
+    
+    kind = [k retain];
+    data = [d retain];
+    timestamp = [t retain];
+    
+    return self;    
+}
+
 @end

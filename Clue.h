@@ -10,9 +10,15 @@
 #import "Interaction.h"
 
 @interface Clue : Interaction {
+    NSString * kind;
+    NSString * data;
 }
+
+@property(retain) NSString * kind;
+@property(retain) NSString * data;
 
 + (NSArray *) cluesFromDatabaseAtPath: (NSString *) path;
 + (Clue *) clueWithKind: (NSString *) kind data: (NSString *) data timestamp: (NSDate * ) timestamp;
+- (Clue *) initWithKind: (NSString *) k data: (NSString *) d timestamp: (NSDate * ) t;
 
 @end
