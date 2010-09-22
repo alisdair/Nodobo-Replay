@@ -35,7 +35,7 @@
 
 - (NSString *) data
 {
-    return [NSString stringWithFormat: @"Position %@, Pressure %.2f", NSStringFromPoint(point), pressure];
+    return [NSString stringWithFormat: @"%@, pressure %.2f", NSStringFromPoint(point), pressure];
 }
 
 @end
