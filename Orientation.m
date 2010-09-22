@@ -31,4 +31,16 @@
     return self;
 }
 
+- (NSString *) data
+{
+    switch (rotation) {
+        case 0:
+            return @"Portrait";
+        case 1:
+            return @"Landscape";
+        default:
+            return nil;
+    }
+}
+
 @end

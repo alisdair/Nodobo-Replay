@@ -17,6 +17,7 @@
 @synthesize endLabel;
 @synthesize pause;
 @synthesize slider;
+@synthesize tableModel;
 
 @synthesize session;
 @synthesize enumerator;
@@ -24,18 +25,23 @@
 @synthesize nextInteraction;
 @synthesize timer;
 
+- (void) setThisInteraction:(Interaction *) i
+{
+    [thisInteraction autorelease];
+    thisInteraction = [i retain];
+    
+    self.tableModel.current = thisInteraction;
+}
+
+
 - (void) setSession: (Session *) s
 {
     [session autorelease];
     session = [s retain];
     
-    NSDate * start = [(Screen * )[self.session.screens objectAtIndex: 0] timestamp];
-    NSDate * end = [(Screen * )[self.session.screens lastObject] timestamp];
-    NSTimeInterval interval = [end timeIntervalSinceDate: start];
-    
-    NSInteger minutes = (NSInteger) interval / 60;
-    NSInteger seconds = (NSInteger) interval % 60;
-    [endLabel setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
+    [self setTimeLabel: endLabel
+                 start: [(Screen * )[self.session.screens objectAtIndex: 0] timestamp]
+                   end: [(Screen * )[self.session.screens lastObject] timestamp]];
 }
 
 - (void) rewind
@@ -95,30 +101,20 @@
     [self updateSlider];
 }
 
-- (void) resetTouch: (NSTimer *) timer
-{
-    view.touch = nil;
-}
-
 - (void) updateInteraction
 {
     self.thisInteraction = self.nextInteraction;
     self.nextInteraction = [self.enumerator nextObject];
     
-    // FIXME: there has got to be a better way to do this...
-    // Screen: update the main view display
     if ([self.thisInteraction isKindOfClass: [Screen class]])
     {
         view.screen = (Screen *) self.thisInteraction;
-        [view setNeedsDisplay: YES];
     }
-    // Touch: set up a touch to be displayed for a bit
     else if ([self.thisInteraction isKindOfClass: [Touch class]])
     {
         view.touch = (Touch *) self.thisInteraction;
-        [view setNeedsDisplay: YES];
-        [NSTimer scheduledTimerWithTimeInterval: 0.75 target: self
-                                       selector: @selector(resetTouch:)
+        [NSTimer scheduledTimerWithTimeInterval: 0.75 target: view
+                                       selector: @selector(clearTouch:)
                                        userInfo: nil repeats: NO];
     }
     else if ([self.thisInteraction isKindOfClass: [Orientation class]])
@@ -129,15 +125,20 @@
     }
 }
 
-- (void) updateLabel
+- (void) setTimeLabel: (NSTextField *) label start: (NSDate *) start end: (NSDate *) end
 {
-    NSDate * start = [(Screen * )[self.session.screens objectAtIndex: 0] timestamp];
-    NSDate * now = self.thisInteraction.timestamp;
-    NSTimeInterval interval = [now timeIntervalSinceDate: start];
+    NSTimeInterval interval = [end timeIntervalSinceDate: start];
     
     NSInteger minutes = (NSInteger) interval / 60;
     NSInteger seconds = (NSInteger) interval % 60;
-    [nowLabel setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
+    [label setStringValue: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
+}
+
+- (void) updateLabel
+{
+    [self setTimeLabel: nowLabel
+                 start: [(Screen * )[self.session.screens objectAtIndex: 0] timestamp]
+                   end: self.thisInteraction.timestamp];
 }
 
 - (void) updateSlider

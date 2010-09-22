@@ -8,17 +8,20 @@
 
 #import <Cocoa/Cocoa.h>
 #import "NodoboController.h"
+#import "TableModel.h"
 
 @interface Nodobo_ReplayAppDelegate : NSObject <NSApplicationDelegate>
 {
     NSWindow * window;
     NodoboView * view;
     NodoboController * controller;
+    TableModel * tableModel;
 }
 
 @property(assign) IBOutlet NSWindow * window;
 @property(assign) IBOutlet NodoboView * view;
 @property(assign) IBOutlet NodoboController * controller;
+@property(assign) IBOutlet TableModel * tableModel;
 
 - (IBAction) runPanel: (id) sender;
 

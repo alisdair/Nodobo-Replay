@@ -13,6 +13,25 @@
 @synthesize touch;
 @synthesize rotated;
 
+- (void) setScreen:(Screen *)s
+{
+    [screen autorelease];
+    screen = [s retain];
+    [self setNeedsDisplay: YES];
+}
+
+- (void) setTouch:(Touch *)t
+{
+    [touch autorelease];
+    touch = [t retain];
+    [self setNeedsDisplay: YES];
+}
+
+- (void) clearTouch: (id) obj
+{
+    self.touch = nil;
+}
+
 - (void) resizeWindow
 {
     if (self.screen == nil || self.screen.image == nil)
@@ -21,19 +40,10 @@
     NSRect windowFrame = [[self window] frame];
     NSRect viewFrame = [self frame];
     NSSize imageSize = [self.screen.image size];
-    if (rotated)
-    {
-        CGFloat t = imageSize.width;
-        imageSize.width = imageSize.height;
-        imageSize.height = t;
-    }
+    CGFloat viewSize = MAX(imageSize.width, imageSize.height);
     
-    CGFloat max = MAX(imageSize.width, imageSize.height);
-    imageSize = NSMakeSize(max, max);
-    
-    CGFloat width = windowFrame.size.width - viewFrame.size.width + imageSize.width;
-    CGFloat height = windowFrame.size.height - viewFrame.size.height + imageSize.height;
-    
+    CGFloat width = windowFrame.size.width - viewFrame.size.width + viewSize;
+    CGFloat height = windowFrame.size.height - viewFrame.size.height + viewSize;
     
     windowFrame = NSMakeRect(windowFrame.origin.x, windowFrame.origin.y, width, height);
     

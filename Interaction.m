@@ -25,4 +25,14 @@
     return [f stringFromDate: self.timestamp];
 }
 
+- (NSString *) kind
+{
+    return [self className];
+}
+
+- (NSString *) data
+{
+    return nil;
+}
+
 @end

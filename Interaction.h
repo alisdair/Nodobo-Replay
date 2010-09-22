@@ -15,6 +15,8 @@
 
 @property(readonly) NSDate * timestamp;
 
+- (NSString *) kind;
 - (NSString *) preciseTimestamp;
+- (NSString *) data;
 
 @end

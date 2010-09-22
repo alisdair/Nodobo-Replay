@@ -20,5 +20,6 @@
 @property(assign) BOOL rotated;
 
 - (void) resizeWindow;
+- (void) clearTouch: (id) obj;
 
 @end
