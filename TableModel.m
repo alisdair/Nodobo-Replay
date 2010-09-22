@@ -31,6 +31,7 @@
     [tableView selectRowIndexes: indexSet byExtendingSelection: NO];
     
     int rowsVisible = [tableView rowsInRect: [tableView visibleRect]].length;
+    [tableView scrollRowToVisible: [tableView selectedRow] - rowsVisible / 2];
     [tableView scrollRowToVisible: [tableView selectedRow] + rowsVisible / 2];
 }
 
