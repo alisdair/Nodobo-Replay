@@ -26,7 +26,10 @@
     [current autorelease];
     current = [i retain];
     
-    int index = [session.interactions indexOfObject: i];
+    NSUInteger index = [session.interactions indexOfObject: i];
+    if (index == NSNotFound)
+        return;
+    
     NSIndexSet * indexSet = [NSIndexSet indexSetWithIndex: index];
     [tableView selectRowIndexes: indexSet byExtendingSelection: NO];
     
