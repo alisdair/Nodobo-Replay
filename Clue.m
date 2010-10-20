@@ -9,6 +9,7 @@
 #import "Clue.h"
 #import "Touch.h"
 #import "Orientation.h"
+#import "Location.h"
 #import "FMDatabase.h"
 
 @implementation Clue
@@ -69,6 +70,18 @@
     else if ([kind isEqualTo: @"orientation"])
     {
         return [Orientation orientationWithRotation: [data integerValue] timestamp: timestamp];
+    }
+    else if ([kind isEqualTo: @"location"])
+    {
+        NSArray * coords = [data componentsSeparatedByString: @","];
+        if ([coords count] < 2)
+        {
+            NSLog(@"Invalid location found: data='%@', timestamp='%@'", data, timestamp);
+        }
+        NSString * lat = [NSString stringWithString:[coords objectAtIndex:0]];
+        NSString * lon = [NSString stringWithString:[coords objectAtIndex:1]];
+        Location * location = [Location locationWithLatitude: lat longitude: lon timestamp: timestamp];
+        return location;
     }
     else
     {
