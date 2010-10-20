@@ -8,6 +8,7 @@
 
 #import "NodoboController.h"
 #import "Orientation.h"
+#import "Location.h"
 
 
 @implementation NodoboController
@@ -18,6 +19,7 @@
 @synthesize pause;
 @synthesize slider;
 @synthesize tableModel;
+@synthesize mapperController;
 
 @synthesize session;
 @synthesize enumerator;
@@ -123,6 +125,10 @@
         view.rotated = (orientation.rotation == 1);
         [view resizeWindow];
     }
+    else if ([self.nextInteraction isKindOfClass: [Location class]])
+    {
+        [mapperController showMarkerAtLocation: (Location * ) self.nextInteraction];
+    }
 }
 
 - (void) setTimeLabel: (NSTextField *) label start: (NSDate *) start end: (NSDate *) end
@@ -176,6 +182,11 @@
         {
             Orientation * orientation = (Orientation *) self.nextInteraction;
             rotated = (orientation.rotation == 1);
+        }
+        if ([self.nextInteraction isKindOfClass: [Location class]])
+        {
+            Location * location = (Location * ) self.nextInteraction;
+            NSLog(@"Location clue: %@, %@", location.latitude, location.longitude);
         }
         
         if ([self.nextInteraction.timestamp timeIntervalSinceDate: now] >= 0.0)

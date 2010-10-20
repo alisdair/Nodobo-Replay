@@ -13,6 +13,7 @@
 #import "Screen.h"
 #import "Touch.h"
 #import "TableModel.h"
+#import "MapperController.h"
 
 @interface NodoboController : NSObject {
     NodoboView * view;
@@ -21,7 +22,8 @@
     NSButton * pause;
     NSSlider * slider;
     TableModel * tableModel;
-    
+    MapperController * mapperController;
+
     Session * session;
     Interaction * thisInteraction;
     Interaction * nextInteraction;
@@ -35,6 +37,7 @@
 @property(assign) IBOutlet NSButton * pause;
 @property(assign) IBOutlet NSSlider * slider;
 @property(assign) IBOutlet TableModel * tableModel;
+@property(assign) IBOutlet MapperController * mapperController;
 
 @property(retain) Session * session;
 @property(retain) NSEnumerator * enumerator;
