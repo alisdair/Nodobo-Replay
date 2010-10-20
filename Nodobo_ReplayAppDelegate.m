@@ -15,6 +15,7 @@
 @synthesize view;
 @synthesize controller;
 @synthesize tableModel;
+@synthesize mapperController;
 
 - (void) applicationDidFinishLaunching: (NSNotification *) notification
 {
@@ -35,6 +36,7 @@
 	Session * session = [Session sessionWithPath: [[urls lastObject] path]];
     [controller setSession: session];
     [tableModel setSession: session];
+    [mapperController setSession: session];
     [controller play: nil];
     [view resizeWindow];
     [window center];

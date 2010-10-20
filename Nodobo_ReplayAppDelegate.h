@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "NodoboController.h"
 #import "TableModel.h"
+#import "MapperController.h"
 
 @interface Nodobo_ReplayAppDelegate : NSObject <NSApplicationDelegate>
 {
@@ -16,12 +17,14 @@
     NodoboView * view;
     NodoboController * controller;
     TableModel * tableModel;
+    MapperController * mapperController;
 }
 
 @property(assign) IBOutlet NSWindow * window;
 @property(assign) IBOutlet NodoboView * view;
 @property(assign) IBOutlet NodoboController * controller;
 @property(assign) IBOutlet TableModel * tableModel;
+@property(assign) IBOutlet MapperController * mapperController;
 
 - (IBAction) runPanel: (id) sender;
 
