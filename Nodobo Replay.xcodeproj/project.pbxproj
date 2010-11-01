@@ -13,13 +13,13 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		DC86F991126CE75D00FAF8C3 /* MapperController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC86F990126CE75D00FAF8C3 /* MapperController.m */; };
-		DC86F9A3126D01FD00FAF8C3 /* map.html in Resources */ = {isa = PBXBuildFile; fileRef = DC86F9A2126D01FD00FAF8C3 /* map.html */; };
 		DC86F9D5126D042700FAF8C3 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC86F9D4126D042700FAF8C3 /* WebKit.framework */; };
 		DC86FAB1126D06CD00FAF8C3 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = DC86FAB0126D06CD00FAF8C3 /* Location.m */; };
 		F2766D9A1209DF3100B3BD62 /* NodoboController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2766D991209DF3100B3BD62 /* NodoboController.m */; };
 		F283F82612031DDA00346265 /* NodoboView.m in Sources */ = {isa = PBXBuildFile; fileRef = F283F82412031DDA00346265 /* NodoboView.m */; };
 		F283F84112031FAE00346265 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = F283F84012031FAE00346265 /* Session.m */; };
 		F2C5C372124A4C9E00B27C29 /* TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C5C371124A4C9E00B27C29 /* TableModel.m */; };
+		F2D181F212707EC200160EAD /* map.html in Resources */ = {isa = PBXBuildFile; fileRef = F2D181F112707EC200160EAD /* map.html */; };
 		F2EA12AF120B1C7F00FAFA37 /* Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EA12AE120B1C7F00FAFA37 /* Orientation.m */; };
 		F2F241D91204D3B0006C6536 /* Screen.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F241D81204D3B0006C6536 /* Screen.m */; };
 		F2F241DD1204D3C9006C6536 /* TestScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F241DC1204D3C9006C6536 /* TestScreen.m */; };
@@ -57,7 +57,6 @@
 		8D1107320486CEB800E47090 /* Nodobo Replay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nodobo Replay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC86F98F126CE75D00FAF8C3 /* MapperController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapperController.h; sourceTree = "<group>"; };
 		DC86F990126CE75D00FAF8C3 /* MapperController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapperController.m; sourceTree = "<group>"; };
-		DC86F9A2126D01FD00FAF8C3 /* map.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = map.html; path = ../../Desktop/map.html; sourceTree = SOURCE_ROOT; };
 		DC86F9D4126D042700FAF8C3 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		DC86FAAF126D06CD00FAF8C3 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		DC86FAB0126D06CD00FAF8C3 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		F283F84012031FAE00346265 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 		F2C5C370124A4C9E00B27C29 /* TableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableModel.h; sourceTree = "<group>"; };
 		F2C5C371124A4C9E00B27C29 /* TableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableModel.m; sourceTree = "<group>"; };
+		F2D181F112707EC200160EAD /* map.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = map.html; sourceTree = "<group>"; };
 		F2EA12AD120B1C7F00FAFA37 /* Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Orientation.h; sourceTree = "<group>"; };
 		F2EA12AE120B1C7F00FAFA37 /* Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Orientation.m; sourceTree = "<group>"; };
 		F2F240171203A3A6006C6536 /* Interaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interaction.h; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DC86F9A2126D01FD00FAF8C3 /* map.html */,
+				F2D181F112707EC200160EAD /* map.html */,
 				8D1107310486CEB800E47090 /* Nodobo_Replay-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -292,7 +292,14 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Nodobo Replay" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Nodobo Replay */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -310,7 +317,7 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				DC86F9A3126D01FD00FAF8C3 /* map.html in Resources */,
+				F2D181F212707EC200160EAD /* map.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
