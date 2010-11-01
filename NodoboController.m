@@ -125,9 +125,9 @@
         view.rotated = (orientation.rotation == 1);
         [view resizeWindow];
     }
-    else if ([self.nextInteraction isKindOfClass: [Location class]])
+    else if ([self.thisInteraction isKindOfClass: [Location class]])
     {
-        [mapperController showMarkerAtLocation: (Location * ) self.nextInteraction];
+        [mapperController showMarkerAtLocation: (Location * ) self.thisInteraction];
     }
 }
 
