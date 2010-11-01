@@ -16,9 +16,9 @@
     function initialize() {
         var start = new google.maps.LatLng(-34.397, 150.644);
         var myOptions = {
-            zoom: 12,
+            zoom: 13,
             center: start,
-            mapTypeId: google.maps.MapTypeId.SATELLITE,
+            mapTypeId: google.maps.MapTypeId.HYBRID,
             navigationControlOptions: {
               style: google.maps.NavigationControlStyle.SMALL
             }
@@ -32,14 +32,13 @@
         latlng = new google.maps.LatLng(lat,lon);
         marker = new google.maps.Marker({
             position: latlng,
-            title: ""
+            title: "",
+			map: map
         });
         markersArray["" + lat + "," + lon] = marker
     }
     
     function show_marker(lat, lon) {
-        marker = markersArray["" + lat + "," + lon]
-        marker.setMap(map)
         center = new google.maps.LatLng(lat,lon);
         map.panTo(center);
         map.setZoom(15);
@@ -48,7 +47,7 @@
     function set_center(lat, lon) {
         center = new google.maps.LatLng(lat,lon);
         map.setCenter(center);
-        map.setZoom(12);
+        map.setZoom(13);
     }
     </script>
 </head>
